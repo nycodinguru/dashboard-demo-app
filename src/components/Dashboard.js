@@ -29,8 +29,10 @@ export default function Dashboard() {
     }, [])
 
     function newNotification() {
-        _notificationBell.current.classList.add('New-notification')
-        playNotificationSound()
+        if (_notificationBell.current){
+            _notificationBell.current.classList.add('New-notification')
+            playNotificationSound();
+        } 
     }
 
     function playNotificationSound() {
@@ -38,7 +40,7 @@ export default function Dashboard() {
     }
 
     function openAcitviyMenu() {
-        let setTimeOutTime = activityMenuOpen.isOpen ? 100 : 500
+        let setTimeOutTime = activityMenuOpen.isOpen ? 100 : 300
         if (!activityMenuOpen.isOpen) setactivityMenuOpen({ ...activityMenuOpen, isOpen: true })
         else if (activityMenuOpen.isOpen) setactivityMenuOpen({ ...activityMenuOpen, isOpen: false })
 

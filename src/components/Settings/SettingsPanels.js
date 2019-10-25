@@ -52,7 +52,7 @@ const SettingsPanels = () => {
                             <div className='Setting-right'>
                                 {j.control === 'dropdown' ?
                                     <div className='Select-wrapper'>
-                                        <select className='Select-drop-down' name=''>
+                                        <select className='Select-drop-down' name='' aria-label={`${j.ariaLabel}`}>
                                             {j.values.map((o, key) => {
                                                 return (
                                                     <option value={`${o.toLowerCase()}`} key={key + 3}>
@@ -72,7 +72,8 @@ const SettingsPanels = () => {
                                                 <div
                                                     className={`Toggle-cover ${j.values[0]} ${j.toggleName}`}
                                                     name={`${j.toggleName}`}
-                                                    onClick={(e) => handleToggle(e)}>
+                                                    onClick={(e) => handleToggle(e)}
+                                                    aria-label={`${j.ariaLabel}`}>
                                                 </div>
                                             </div>
                                         </div> : ''}

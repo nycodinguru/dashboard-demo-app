@@ -44,7 +44,7 @@ export default function NavPanel() {
     const navMenu = navMenuItems.map((i, key) => {
         return (
             <ul className={`${i.group}`} key={key + 1}>
-                {i.names.map((g, key) => { return <li className={`Nav-menu-item ${g.name}`} key={key + 2} onClick={() => closeNav()}></li> })}
+                {i.names.map((g, key) => { return <li className={`Nav-menu-item ${g.name}`} key={key + 2} onClick={() => closeNav()} aria-label={`${g.ariaLabel}`}></li> })}
             </ul>
         )
     })
@@ -54,7 +54,7 @@ export default function NavPanel() {
         <React.Fragment>
             <div className='Nav-panel-container Closed' ref={_navPanel} onMouseEnter={() => openNavHelper()} onMouseLeave={() => closeNavHelper()}>
                 <div className='Close-button-parent'>
-                    <div className='Close-button' onClick={() => closeNav()}></div>
+                    <div className='Close-button' aria-label="Close" onClick={() => closeNav()}></div>
                 </div>
                 <h3 className='Nav-panel-logo'>Linus</h3>
                 <div className='Nav-menus'>

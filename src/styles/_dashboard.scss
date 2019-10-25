@@ -116,13 +116,13 @@
                         z-index: 0;
 
                         &.Open {
-                            animation: activity-menu-fade-in 0.7s ease-out 0s 1 both;
+                            animation: activity-menu-fade-in 0.4s ease-out 0s 1 both;
                             @include visible;
                         }
 
                         &.Close {
                             @include visible;
-                            animation: activity-menu-fade-out 0.5s ease-in 0.4s 1 both;
+                            animation: activity-menu-fade-out 0.4s ease-in 0.4s 1 both;
                         }
 
                     }
@@ -146,7 +146,7 @@
 
                             &.Open {
                                 visibility: visible;
-                                animation: activity-menu-items-fade-in 0.4s ease-out 0s 1 both;
+                                animation: activity-menu-items-fade-in 0.2s linear 0s 1 both;
 
                                 &:first-of-type::after {
                                     transform: rotate(180deg);
@@ -156,7 +156,7 @@
 
                             &.Close {
                                 visibility: visible;
-                                animation: activity-menu-items-fade-out 0.2s ease-out 0s 1 both;
+                                animation: activity-menu-items-fade-out 0.3s ease-out 0s 1 both;
                             }
 
 

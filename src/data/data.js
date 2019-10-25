@@ -8,8 +8,9 @@ export const settings = [
                 infoDescription: '',
                 description: 'This is the default currency that all of your valuations will be translated to',
                 control: 'dropdown',
+                ariaLabel: 'default-currency',
                 id: '_currencyDropDown',
-                values: ['usd', 'gbp', 'eur', 'chf', 'hkd']
+                values: ['usd', 'eur', 'jpy', 'gbp', 'chf', 'cad']
             },
             {
                 name: 'Accounting Methodology',
@@ -17,8 +18,9 @@ export const settings = [
                 infoDescription: '',
                 description: 'This is the methodology in which your tax and accounting documentation will be prepared',
                 control: 'dropdown',
+                ariaLabel: 'accounting methodology',
                 id: '_accountingDropDown',
-                values: ['fifo', 'lifo', 'filo', 'lilo']
+                values: ['fifo', 'lifo']
             }
         ]
     },
@@ -32,6 +34,7 @@ export const settings = [
                 description: 'We will push all notifications to your mobile devices',
                 toggleName: '_smsNotifications',
                 control: 'toggle',
+                ariaLabel: 'sms notifications',
                 values: ['on']
             },
             {
@@ -41,6 +44,7 @@ export const settings = [
                 description: 'Your email and phone number will not be searchable',
                 toggleName: '_emailNotifications',
                 control: 'toggle',
+                ariaLabel: 'email notifications',
                 values: ['on']
             }
         ]
@@ -55,6 +59,7 @@ export const settings = [
                 description: 'Your profile with your wallet info will not be public or searchable',
                 toggleName: '_profilePrivacy',
                 control: 'toggle',
+                ariaLabel: 'make profile private',
                 values: ['on']
             },
             {
@@ -64,6 +69,7 @@ export const settings = [
                 description: 'Your privacy is critically important to us. In order to protect your personal data we have made opting out as easy as a flip of a switch',
                 toggleName: '_searchPrivacy',
                 control: 'toggle',
+                ariaLabel: 'search privacy',
                 values: ['off']
             }
         ]
@@ -139,14 +145,17 @@ export const navMenuItems = [
         group: 'Nav-menu-upper',
         names: [{
                 name: 'Accounts',
+                ariaLabel: 'accounts',
                 link: ''
             },
             {
                 name: 'Ledger',
+                ariaLabel: 'ledger',
                 link: ''
             },
             {
                 name: 'Finance',
+                ariaLabel: 'finance',
                 link: ''
             }]
         },
@@ -154,10 +163,12 @@ export const navMenuItems = [
         group: 'Nav-menu-lower',
         names: [{
                 name: 'Learn',
+                ariaLabel: 'learn',
                 link: ''
             },
             {
                 name: 'Marketplace',
+                ariaLabel: 'marketplace',
                 link: ''
             }]
     }
