@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+  }
+
+body {
+    background-color: $offWhite;
+
+    @include mobile {
+      &.Open {
+          overflow: hidden !important;
+      }
+  }
+}
+ 
+select {
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+}
+
+option {
+    text-align: center;
+}
+
+ul {
+  list-style: none;
+
+  li {
+    cursor: pointer;
+  }
+}
+
+div {
+  -webkit-tap-highlight-color: transparent;
+}

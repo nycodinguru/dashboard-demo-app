@@ -1,0 +1,64 @@
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin background-center-no-repeat {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+@mixin visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+@mixin drop-down-menu {
+    background: $pureWhite;
+    @include hidden;
+    box-shadow: 0 1px 13px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    text-align: center;
+    transition: 0.5s all ease-out;
+    position: absolute;
+    color: $royalBlue;
+}
+
+@mixin dashboard-drop-down-small {
+    font-size: 0.7rem;
+    width: 130px;
+    padding: 10px 15px;
+    position: absolute;
+    z-index: 160;
+    margin-top: 4px;
+}
+
+@mixin dashboard-drop-down-small-arrow {
+    content: '_';
+    color: transparent;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $pureWhite;
+    top: -9px;
+    right: 56px;
+    transform: rotate(180deg);
+    z-index: 100;
+}
+
+@mixin bottom-border {
+    border-bottom: solid rgba(0, 0, 0, 0.1);
+    border-width: 1px;
+}

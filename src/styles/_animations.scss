@@ -1,0 +1,93 @@
+@keyframes nav-button-rise {
+    0% { transform: translate(-17px, 70px); }
+    100% { transform: translate(-17px, -18px); }
+}
+
+@keyframes up-side-down {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+}
+
+@keyframes bellshake {
+    0% { transform: rotate(0); }
+    15% { transform: rotate(5deg); }
+    30% { transform: rotate(-5deg); }
+    45% { transform: rotate(4deg); }
+    60% { transform: rotate(-4deg); }
+    75% { transform: rotate(2deg); }
+    85% { transform: rotate(-2deg); }
+    92% { transform: rotate(1deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes activity-menu-items-fade-in {
+    0% {
+        opacity: 0;
+        transform: translate(-4px, -10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-4px, 15px);
+    }
+}
+
+@keyframes activity-menu-items-fade-out {
+    0% {
+        opacity: 1;
+        transform: translate(-4px, 15px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-4px, -10px);
+    }
+}
+
+@keyframes activity-menu-fade-in {
+    0% {
+        height: inherit;
+        box-shadow: none;
+        background: none;
+      }
+    95% {
+        height: 175px;
+        box-shadow: 0 6px 7px -1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, #b9888800 28%, $pureWhite 10%);
+      }
+    100% {
+        height: 179px;
+        box-shadow: 0 6px 7px -1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, #b9888800 28%, $pureWhite 0%);
+      }
+}
+
+
+@keyframes activity-menu-fade-out {
+    0% {
+        height: 179px;
+        box-shadow: 0 6px 7px -1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, #b9888800 28%, $pureWhite 0%);
+      }
+    5% {
+        height: 175px;
+        box-shadow: 0 6px 7px -1px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, #b9888800 28%, $pureWhite 0%);
+      }
+    40% {
+        opacity: 0.6;
+        height: 92px;
+        box-shadow: 0 6px 7px -1px rgba(0, 0, 0, 0.06);
+        background: none;
+      }
+    99% {
+        height: 10px;
+        box-shadow: none;
+        background: transparent;
+      }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+
+                                
