@@ -34,16 +34,16 @@
                 width: 100vw;
                 margin: 0;
             }
-    
+
             .Dashboard-current {
                 @include mobile {
                     margin: 60px 0 0 10px
                 }
-    
+
                 .Dashboard-current-header {
                     font-size: 2.3rem;
                 }
-    
+
                 .Dashboard-current-path {
                     font-size: 0.8rem;
                     padding: 10px 0;
@@ -65,7 +65,7 @@
                     }
                 }
             }
-    
+
             .Dashboard-header-info {
                 transform: translateY(-10px);
                 @include flex-row;
@@ -77,7 +77,7 @@
                     right: 40px;
                     top: 20px;
                 }
-    
+
                 .Dashboard-activity {
                     cursor: pointer !important;
                     background: $powderBlue;
@@ -94,7 +94,8 @@
                     height: 47px;
                     z-index: 0;
 
-                    &:hover, &.Open {
+                    &:hover,
+                    &.Open {
                         background: $royalBlue;
                         transition: 0.3s all ease-in-out;
                         transform: translateY(-1px);
@@ -108,7 +109,7 @@
                         background: linear-gradient(180deg, #b9888800 40%, $pureWhite 0%);
                         @include drop-down-menu;
                         box-shadow: none;
-                        transform: translateX(-22px);
+                        transform: translateX(-21px);
                         height: 70px;
                         padding: 25px;
                         width: 182px;
@@ -123,7 +124,7 @@
                             @include visible;
                             animation: activity-menu-fade-out 0.5s ease-in 0.4s 1 both;
                         }
-                     
+
                     }
 
                     .Dashboard-activity-list {
@@ -142,11 +143,11 @@
                             color: $regularGrey;
                             width: 100%;
                             text-align: center;
-                        
+
                             &.Open {
                                 visibility: visible;
                                 animation: activity-menu-items-fade-in 0.4s ease-out 0s 1 both;
-                            
+
                                 &:first-of-type::after {
                                     transform: rotate(180deg);
                                     filter: brightness(100);
@@ -185,23 +186,23 @@
                                     background-position: center;
                                     background-repeat: no-repeat;
                                     color: transparent;
-                                    margin-left: 20px;                                    
+                                    margin-left: 20px;
                                 }
                             }
 
-                        &:last-of-type {
-                            border: none
-                        }
+                            &:last-of-type {
+                                border: none
+                            }
 
-                        &:hover {
-                            transition: 0.4s all ease-in;
-                            color: $royalBlue;
-                            text-shadow: 0 0 1px $royalBlue;
-                        }
+                            &:hover {
+                                transition: 0.4s all ease-in;
+                                color: $royalBlue;
+                                text-shadow: 0 0 1px $royalBlue;
+                            }
                         }
                     }
                 }
-    
+
                 .Dashboard-notification {
                     background-image: url('../assets/svgs/bell.svg');
                     background-size: cover;
@@ -213,7 +214,7 @@
                     transition: 0.4s all ease-in-out;
 
                     &.New-notification {
-                        animation: bellshake .5s cubic-bezier(.36,.07,.19,.97) 0s 2 both;
+                        animation: bellshake .5s cubic-bezier(.36, .07, .19, .97) 0s 2 both;
 
                         &::after {
                             content: '_';
@@ -232,11 +233,11 @@
                             box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
                         }
 
-                        &:hover > .Dashboard-notification-list {
+                        &:hover>.Dashboard-notification-list {
                             @include visible;
                             top: 28px;
                         }
-    
+
                     }
 
                     .Dashboard-notification-list {
@@ -256,7 +257,7 @@
                         }
                     }
                 }
-                    
+
                 .Dashboard-profile-img {
                     background-image: url('../assets/jpgs/profile-pic.jpg');
                     background-size: cover;
@@ -265,7 +266,7 @@
                     width: 30px;
                     border-radius: 50%;
 
-                    &:hover > .Dashboard-profile-menu-list {
+                    &:hover>.Dashboard-profile-menu-list {
                         @include visible;
                         top: 57px;
                     }
@@ -314,12 +315,11 @@
                                 border: none;
                                 padding: 10px 0 5px 0;
                             }
-    
+
                         }
                     }
                 }
             }
         }
-    }  
+    }
 }
-

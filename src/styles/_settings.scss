@@ -15,7 +15,7 @@
         box-shadow: 0 2px 20px 10px rgba(102, 74, 74, 0.04);
         border-radius: 7px;
         padding: 22px;
-        background-color: $pureWhite;;
+        background-color: $pureWhite;
         color: $heatherGrey;
         border: solid rgba(0, 0, 0, 0.065);
         border-width: 1px;
@@ -39,11 +39,11 @@
             display: flex;
             justify-content: space-between;
 
-        
+
             &:last-of-type {
-            border-bottom: none;
-            padding-bottom: 0 !important;
-        }
+                border-bottom: none;
+                padding-bottom: 0 !important;
+            }
 
             .Setting-name {
                 color: #808488;
@@ -53,11 +53,11 @@
                 &.info {
                     &::after {
                         content: '_';
-                        color:transparent;
+                        color: transparent;
                         background-image: url('../assets/pngs/info-icon.png');
                         background-size: 100%;
                         background-position: center;
-                        background-repeat: no-repeat; 
+                        background-repeat: no-repeat;
                         padding: 0 3px;
                         margin-left: 9px;
                     }
@@ -89,7 +89,7 @@
                     padding: 5px 30px;
                     border: none;
                     padding: 5px 25px 5px 0;
-    
+
                     &:hover {
                         opacity: 0.5;
                         transition: all 0.3s ease-in-out;
@@ -116,7 +116,7 @@
                     margin: -16px 0 0 36px;
                     position: absolute;
                 }
-                
+
                 &.on {
                     background: linear-gradient(55deg, #2e7adc 0%, #0331bc 100%);
 
@@ -126,13 +126,13 @@
                         font-size: 0.8rem;
                         position: absolute;
                         transform: translate(12px, 9px);
-                    }   
+                    }
 
                     &::after {
                         display: none;
                     }
                 }
-                
+
                 .Toggle-switch {
                     z-index: 50;
                     height: 73%;
@@ -142,7 +142,7 @@
                     margin: 0 5px;
                     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.3);
                     top: 4px;
-                    position: relative; 
+                    position: relative;
                     transition: all 0.5s ease-in-out;
 
                     .Toggle-cover {
@@ -169,172 +169,172 @@
                 }
             }
         }
-    
-    .Themes-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin: -50px 0 0 20px;
-        padding-bottom: 30px;
 
-        @include mobile {
-            justify-content: space-around;
-            margin: -50px 0 0 0;
-        }
+        .Themes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin: -50px 0 0 20px;
+            padding-bottom: 30px;
 
-        .Theme-item {
-            margin: 25px 10px 0 10px;
-            height: 73px;
-            width: 90px;
-            cursor: pointer;
-            
-            .Theme-preview {
-                height: 70%;
-                width: 100%;
-                border-radius: 6px;
-                margin-top: 24px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: solid transparent;
-                border-width: 1px;
-
-                &.active {
-                    border: solid $activeThemeBorder !important;
-                    border-width: 2px;
-                    box-shadow: 0 1px 9px 1px rgba(0, 0, 0, 0.2);
-
-                    &:hover {
-                        transform: none;
-                        box-shadow: inherit;
-                    }
-                }
-
-                &:hover {
-                    transition: 0.3s all ease-out;
-                    transform: translateY(-3px);
-                    box-shadow: 0 4px 7px 1px rgba(0, 0, 0, 0.3);
-                }
-
-                .Theme-preview-menu-items-left {
-                    height: 4px;
-                    width: 5%;
-                    background-color: white;
-                    border-radius: 10px;
-                    margin-right: 5px;
-
-                    &::before {
-                        content: '_';
-                        color: transparent;
-                        height: 4px;
-                        border-radius: 10px;
-                        width: 100%;
-                        background-color: inherit;
-                        position: relative;
-                        display: inline-block;
-                        top: -11px;
-
-                    }
-
-                    &::after {
-                        content: '_';
-                        color: transparent;
-                        height: 4px;
-                        width: 100%;
-                        background-color: inherit;
-                        position: relative;
-                        border-radius: 10px;
-                        display: inline-block;
-                        top: -9px;
-                        opacity: 0.4;
-
-                    }
-                }
-    
-                .Theme-preview-menu-items-right {
-                    height: 4px;
-                    width: 75%;
-                    background-color: $pureWhite;
-                    position: relative;
-                    border-radius: 10px;
-
-                    &::before {
-                        content: '_';
-                        color: transparent;
-                        height: 4px;
-                        border-radius: 10px;
-                        width: 100%;
-                        background-color: inherit;
-                        position: relative;
-                        display: inline-block;
-                        top: -11px;
-
-                    }
-
-                    &::after {
-                        content: '_';
-                        color: transparent;
-                        height: 4px;
-                        width: 100%;
-                        background-color: inherit;
-                        position: relative;
-                        border-radius: 10px;
-                        display: inline-block;
-                        top: -9px;
-                        opacity: 0.4;
-
-                    }
-                }
-            }
-    
-            .Theme-name {
-                text-align: center;
-                font-size: 0.7rem;
-                margin: 7px 0;
-    
-                &.active {
-                    color: rgb(3, 49, 188);
-                    font-weight: bold;
-                }
+            @include mobile {
+                justify-content: space-around;
+                margin: -50px 0 0 0;
             }
 
-            &:last-of-type {
+            .Theme-item {
+                margin: 25px 10px 0 10px;
+                height: 73px;
+                width: 90px;
+                cursor: pointer;
 
                 .Theme-preview {
-                    background-color: rgb(202, 202, 202);
+                    height: 70%;
+                    width: 100%;
+                    border-radius: 6px;
+                    margin-top: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: solid transparent;
+                    border-width: 1px;
 
-                    .Theme-preview-menu-items-left {
-                        display: none;
+                    &.active {
+                        border: solid $activeThemeBorder !important;
+                        border-width: 2px;
+                        box-shadow: 0 1px 9px 1px rgba(0, 0, 0, 0.2);
+
+                        &:hover {
+                            transform: none;
+                            box-shadow: inherit;
+                        }
                     }
 
-                    .Theme-preview-menu-items-right {
-                        background-color: transparent;
-                        height: 0;
+                    &:hover {
+                        transition: 0.3s all ease-out;
+                        transform: translateY(-3px);
+                        box-shadow: 0 4px 7px 1px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .Theme-preview-menu-items-left {
+                        height: 4px;
+                        width: 5%;
+                        background-color: white;
+                        border-radius: 10px;
+                        margin-right: 5px;
 
                         &::before {
-                            display: none;
+                            content: '_';
+                            color: transparent;
+                            height: 4px;
+                            border-radius: 10px;
+                            width: 100%;
+                            background-color: inherit;
+                            position: relative;
+                            display: inline-block;
+                            top: -11px;
+
                         }
 
                         &::after {
-                            color: $vantaBlack;
-                            content: '+';
-                            height: 0px;
+                            content: '_';
+                            color: transparent;
+                            height: 4px;
                             width: 100%;
-                            background-color: transparent;
-                            font-size: 3.5rem;
-                            text-align: center;
-                            font-weight: lighter;
-                            top: -40px;
-                            opacity: 0.7;
-                            width: 100%;
+                            background-color: inherit;
+                            position: relative;
+                            border-radius: 10px;
+                            display: inline-block;
+                            top: -9px;
+                            opacity: 0.4;
+
                         }
                     }
 
+                    .Theme-preview-menu-items-right {
+                        height: 4px;
+                        width: 75%;
+                        background-color: $pureWhite;
+                        position: relative;
+                        border-radius: 10px;
+
+                        &::before {
+                            content: '_';
+                            color: transparent;
+                            height: 4px;
+                            border-radius: 10px;
+                            width: 100%;
+                            background-color: inherit;
+                            position: relative;
+                            display: inline-block;
+                            top: -11px;
+
+                        }
+
+                        &::after {
+                            content: '_';
+                            color: transparent;
+                            height: 4px;
+                            width: 100%;
+                            background-color: inherit;
+                            position: relative;
+                            border-radius: 10px;
+                            display: inline-block;
+                            top: -9px;
+                            opacity: 0.4;
+
+                        }
+                    }
                 }
-    
-                
+
+                .Theme-name {
+                    text-align: center;
+                    font-size: 0.7rem;
+                    margin: 7px 0;
+
+                    &.active {
+                        color: rgb(3, 49, 188);
+                        font-weight: bold;
+                    }
+                }
+
+                &:last-of-type {
+
+                    .Theme-preview {
+                        background-color: rgb(202, 202, 202);
+
+                        .Theme-preview-menu-items-left {
+                            display: none;
+                        }
+
+                        .Theme-preview-menu-items-right {
+                            background-color: transparent;
+                            height: 0;
+
+                            &::before {
+                                display: none;
+                            }
+
+                            &::after {
+                                color: $vantaBlack;
+                                content: '+';
+                                height: 0px;
+                                width: 100%;
+                                background-color: transparent;
+                                font-size: 3.5rem;
+                                text-align: center;
+                                font-weight: lighter;
+                                top: -40px;
+                                opacity: 0.7;
+                                width: 100%;
+                            }
+                        }
+
+                    }
+
+
+                }
             }
         }
-    }  
     }
 }

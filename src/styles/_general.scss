@@ -3,24 +3,24 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lexend Deca', sans-serif;
-  }
+}
 
 body {
     background-color: $offWhite;
 
     @include mobile {
-      &.Open {
-          overflow: hidden !important;
-      }
-  }
+        &.Open {
+            overflow: hidden !important;
+        }
+    }
 }
- 
+
 select {
     -webkit-appearance: none;
     cursor: pointer;
 
     &:focus {
-      outline: none;
+        outline: none;
     }
 }
 
@@ -29,13 +29,13 @@ option {
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 
-  li {
-    cursor: pointer;
-  }
+    li {
+        cursor: pointer;
+    }
 }
 
 div {
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
