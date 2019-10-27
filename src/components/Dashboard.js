@@ -28,10 +28,10 @@ export default function Dashboard() {
     }, [])
 
     function newNotification() {
-        if (_notificationBell.current){
+        if (_notificationBell.current) {
             _notificationBell.current.classList.add('New-notification')
             playNotificationSound();
-        } 
+        }
     }
 
     function playNotificationSound() {
@@ -46,13 +46,11 @@ export default function Dashboard() {
         if (!activityMenuOpen.isOpen) {
             _activityMenu.current.classList.remove('Close');
             _dashboardActivity.current.classList.remove('Close');
-            _activityMenu.current.classList.add('Open');
             _dashboardActivity.current.classList.add('Open');
         }
         if (activityMenuOpen.isOpen) {
             _activityMenu.current.classList.add('Close');
             _dashboardActivity.current.classList.add('Close');
-            _activityMenu.current.classList.remove('Open');
             _dashboardActivity.current.classList.remove('Open');
 
         }

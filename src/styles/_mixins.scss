@@ -62,3 +62,10 @@
     border-bottom: solid rgba(0, 0, 0, 0.1);
     border-width: 1px;
 }
+
+@mixin dashboard-activity-open {
+    background: $royalBlue;
+    transition: 0.3s all ease-in-out;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
+}

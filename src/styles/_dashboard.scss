@@ -93,20 +93,30 @@
 
                     &:hover,
                     &.Open {
-                        background: $royalBlue;
-                        transition: 0.3s all ease-in-out;
-                        transform: translateY(-1px);
-                        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
-
-                        .Dashboard-activity-list {
+                       @include dashboard-activity-open;
+                       
+                       .Dashboard-activity-list {
                             .Dashboard-activity-item {
                                 &:first-of-type {
                                     color: $pureWhite;
                                 }
-
                                 &:first-of-type::after {
                                     filter: brightness(100);
                                 }
+                            }
+                        }
+                      
+                    }
+
+                    &.Open {
+                        @include dashboard-activity-open;
+                        .Dashboard-activity-list {
+                            animation: activity-menu-fade-in 0.4s ease-out 0s 1 both;
+                            @include visible;
+
+                            .Dashboard-activity-item {
+                                visibility: visible !important;
+                                animation: activity-menu-items-fade-in 0.2s linear 0s 1 both;
                             }
 
                         }
@@ -130,11 +140,6 @@
                         z-index: 0;
                         opacity: 1;
 
-                        &.Open {
-                            animation: activity-menu-fade-in 0.4s ease-out 0s 1 both;
-                            @include visible;
-                        }
-
                         &.Close {
                             @include visible;
                             animation: activity-menu-fade-out 0.4s ease-in 0.4s 1 both;
@@ -151,9 +156,6 @@
                             text-align: center;
 
                             &.Open {
-                                visibility: visible !important;
-                                animation: activity-menu-items-fade-in 0.2s linear 0s 1 both;
-
                                 &:first-of-type::after {
                                     transform: rotate(180deg);
                                 }
