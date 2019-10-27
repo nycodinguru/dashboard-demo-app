@@ -11,7 +11,6 @@ export default function Dashboard() {
         newNotification: false
     });
     const _activityMenu = React.createRef();
-    const _activityDropdown = React.createRef();
     const _dashboardActivity = React.createRef();
     const _notificationBell = React.createRef();
     const _notificationSound = React.createRef();
@@ -46,18 +45,14 @@ export default function Dashboard() {
 
         if (!activityMenuOpen.isOpen) {
             _activityMenu.current.classList.remove('Close');
-            _activityDropdown.current.classList.remove('Close');
             _dashboardActivity.current.classList.remove('Close');
             _activityMenu.current.classList.add('Open');
-            _activityDropdown.current.classList.add('Open');
             _dashboardActivity.current.classList.add('Open');
         }
         if (activityMenuOpen.isOpen) {
             _activityMenu.current.classList.add('Close');
-            _activityDropdown.current.classList.add('Close');
             _dashboardActivity.current.classList.add('Close');
             _activityMenu.current.classList.remove('Open');
-            _activityDropdown.current.classList.remove('Open');
             _dashboardActivity.current.classList.remove('Open');
 
         }
@@ -91,7 +86,6 @@ export default function Dashboard() {
                         </div>
                         <div className='Dashboard-header-info'>
                             <div className='Dashboard-activity' ref={_dashboardActivity} onClick={() => openAcitviyMenu()}>
-                                <div className='Activity-dropdown' ref={_activityDropdown}></div>
                                 <ul className='Dashboard-activity-list' ref={_activityMenu}>
                                     {dropDownMenu}
                                 </ul>
