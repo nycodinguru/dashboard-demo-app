@@ -1,32 +1,38 @@
 .Nav-panel-container {
     height: 100%;
-    width: 0;
+    width: 80px;
     position: fixed;
     z-index: 999;
     display: flex;
 
+    @include mobile {
+        width: 0;
+
+        &.Open {
+            width: 300px !important;
+        }
+    }
+
     &.Open {
-        width: 100vw;
+        transition: all 0.6s cubic-bezier(.24, 1.01, .68, 1.39);
+        width: 210px;
     }
 
     .Nav-panel {
-        transition: all 0.6s cubic-bezier(.24, 1.01, .68, 1.39);
         height: 100%;
-        width: 12.5em;
+        width: 100%;
         background-color: var(--navcolor, $endorGreen);
         color: var(--menucolor, $offWhite);
         text-shadow: 0 0 1px var(--menucolor, $offWhite);
         overflow-y: auto;
     
         @include mobile {
-            width: 20em;
+            width: 100%;
             padding-left: 70px;
             transform: translateX(-70px);
         }
     
         &.Closed {
-            width: 80px;
-    
             @include mobile {
                 transform: translateX(-100vw);
                 transition: 0.5s all ease-in-out;
