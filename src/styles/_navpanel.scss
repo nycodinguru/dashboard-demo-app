@@ -10,7 +10,7 @@
         width: 0;
 
         &.Open {
-            width: 300px !important;
+            width: 100vw !important;
         }
     }
 
@@ -21,14 +21,13 @@
 
     .Nav-panel {
         height: 100%;
-        width: 100%;
+        width: 300px;
         background-color: var(--navcolor, $endorGreen);
         color: var(--menucolor, $offWhite);
         text-shadow: 0 0 1px var(--menucolor, $offWhite);
         overflow-y: auto;
     
         @include mobile {
-            width: 100%;
             padding-left: 70px;
             transform: translateX(-70px);
         }
@@ -156,14 +155,15 @@
         display: none;
     
         @include mobile {
+            height: 100%;
+            width: calc(100vw - 230px); 
+            position: absolute;
+            left: 230px;
+
             &.Open {
                 display: block;
+                animation: dim-area-right-of-nav 0.3s ease-in 0.3s 1 both;
             }
-    
-            height: 100%;
-            width: 100vw;
-            position: absolute;
-            left: 250px;
         }
         
     }
@@ -181,7 +181,6 @@
         left: 35px;
         background-color: var(--navcolor, $endorGreen);
         color: var(--menucolor, $offWhite);
-        text-shadow: 0 0 1px var(--menucolor, $offWhite);
         padding: 12px 27px;
         border-radius: 25px;
         @include flex-row;
@@ -193,8 +192,9 @@
     }
 
     &.Open {
-        transition: 0.3s all ease-in-out;
-        margin-left: 120vw !important;
+        transition: 0.4s all ease-in-out;
+        @include hidden;
+        margin-left: 100vw !important;
     }
 
     .Floating-nav-button-label {
@@ -206,22 +206,18 @@
         height: 3px;
         background-color: var(--menucolor, $offWhite);
         border-radius: 4px;
-        margin: 1px 0 0 17px;
+        margin: 2px 0 0 17px;
 
         &::before {
-            content: '_';
-            color: var(--menucolor, $offWhite);
-            display: inline-block;
-            transform: translate(-2px, -27px);
-            font-size: 2rem;
+            @include floating-nav-button-icon;
+            width: 70%;
+            transform: translate(-17px, 6px);
         }
 
         &::after {
-            content: '_';
-            color: var(--menucolor, $offWhite);
-            display: inline-block;
-            transform: translate(-1px, -51px);
-            font-size: 1.5rem;
+            @include floating-nav-button-icon;
+            width: 55%;
+            transform: translate(-17px, -8px);
         }
     }
 }

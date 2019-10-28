@@ -58,6 +58,12 @@
     z-index: 100;
 }
 
+@mixin dashboard-il-hover {
+    transition: 0.4s all ease-in;
+    color: $royalBlue;
+    text-shadow: 0 0 1px #0331bc83;;
+}
+
 @mixin bottom-border {
     border-bottom: solid rgba(0, 0, 0, 0.1);
     border-width: 1px;
@@ -68,4 +74,14 @@
     transition: 0.3s all ease-in-out;
     transform: translateY(-1px);
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+@mixin floating-nav-button-icon {
+    content: '_';
+    display: inline-block;
+    color: transparent;
+    height: 3px;
+    background-color: inherit;
+    border-radius: 4px;
+    margin: 1px 0 0 17px;   
 }
