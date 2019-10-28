@@ -46,22 +46,24 @@
                 }
             }
     
-            .Nav-panel-logo {
-                &::after {
-                    content: 'L';
-                }
-            }
+        
         }
     
         .Nav-panel-logo {
             margin: 30px auto 50px auto;
             text-align: center;
             font-size: 0;
-    
-            &::after {
-                content: 'Linus';
-                font-size: 1.7rem;
+            color: transparent;
+
+            .Nav-panel-svg-logo {
+                width: 60%;
+                height: 100px;
+
+                path {
+                    fill: var(--menucolor, $offWhite);
+                }
             }
+
         }
     
         .Nav-menu-item {
