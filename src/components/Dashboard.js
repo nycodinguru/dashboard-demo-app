@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import SettingsPanels from './Settings/SettingsPanels';
 import { dashBoardDropDownItems } from '../data/data.js';
 import notificationSound from '../assets/mp3s/pop-sound.mp3';
+
+import SettingsPanels from './Settings/SettingsPanels';
 
 export default function Dashboard() {
     const [activityMenuOpen, setactivityMenuOpen] = useState({
@@ -10,13 +11,13 @@ export default function Dashboard() {
     const [notificationFlag, setNotificationFlag] = useState({
         newNotification: false
     });
-    const _activityMenu = React.createRef();
-    const _dashboardActivity = React.createRef();
-    const _notificationBell = React.createRef();
-    const _notificationSound = React.createRef();
+    const [renderMenuItems, setRenderMenuItems] = useState({
+        render: false
+    });
+    
     const dropDownMenu = dashBoardDropDownItems.links.map((i, key) => {
         return (
-            <li key={key + 1} className='Dashboard-activity-item'>{i.name}</li>
+            <li key={key + 1} className={`Dashboard-activity-item ${renderMenuItems.render ? 'Open' : 'Closed'}`}>{i.name}</li>
         )
     });
 
@@ -28,53 +29,28 @@ export default function Dashboard() {
     }, [])
 
     function newNotification() {
-        if (_notificationBell.current) {
-            _notificationBell.current.classList.add('New-notification')
-            playNotificationSound();
-        }
+        setNotificationFlag({ ...notificationFlag, newNotification: true })
+        if (notificationFlag.newNotification) playNotificationSound()
     }
 
     function playNotificationSound() {
-        setNotificationFlag({ ...notificationFlag, newNotification: true })
+        
     }
 
     function openAcitviyMenu() {
-        let setTimeOutTime = activityMenuOpen.isOpen ? 100 : 300
         if (!activityMenuOpen.isOpen) setactivityMenuOpen({ ...activityMenuOpen, isOpen: true })
         else if (activityMenuOpen.isOpen) setactivityMenuOpen({ ...activityMenuOpen, isOpen: false })
-
-        if (!activityMenuOpen.isOpen) {
-            _activityMenu.current.classList.remove('Close');
-            _dashboardActivity.current.classList.remove('Close');
-            _dashboardActivity.current.classList.add('Open');
-        }
-        if (activityMenuOpen.isOpen) {
-            _activityMenu.current.classList.add('Close');
-            _dashboardActivity.current.classList.add('Close');
-            _dashboardActivity.current.classList.remove('Open');
-
-        }
-        setTimeout(() => renderMenu(), setTimeOutTime);
+        renderMenu();
     }
 
     function renderMenu() {
-        if (!activityMenuOpen.isOpen) {
-            document.querySelectorAll('.Dashboard-activity-item').forEach(i => {
-                i.classList.remove('Close')
-                i.classList.add('Open')
-            })
-        }
-        else {
-            document.querySelectorAll('.Dashboard-activity-item').forEach(i => {
-                i.classList.add('Close')
-                i.classList.remove('Open')
-            })
-        }
+        if (!activityMenuOpen.isOpen) setRenderMenuItems({...renderMenuItems, render: true})
+        else { setRenderMenuItems({...renderMenuItems, render: false}) }
     }
 
     return (
         <React.Fragment>
-            {notificationFlag.newNotification ? <audio ref={_notificationSound} src={notificationSound} autoPlay /> : ''}
+            {notificationFlag.newNotification ? <audio src={notificationSound} autoPlay /> : ''}
             <div className='Dashboard-container'>
                 <div className='Dashboard-container-inner'>
                     <div className='Dashboard-header'>
@@ -83,14 +59,14 @@ export default function Dashboard() {
                             <h3 className='Dashboard-current-path'> <span>Profile</span> Settings </h3>
                         </div>
                         <div className='Dashboard-header-info'>
-                            <div className='Dashboard-activity' ref={_dashboardActivity} onClick={() => openAcitviyMenu()}>
-                                <ul className='Dashboard-activity-list' ref={_activityMenu}>
+                            <div className={`Dashboard-activity ${activityMenuOpen.isOpen ? 'Open' : 'Closed'}`} onClick={() => openAcitviyMenu()}>
+                                <ul className={`Dashboard-activity-list ${activityMenuOpen.isOpen ? '' : 'Closed'}`}>
                                     {dropDownMenu}
                                 </ul>
                             </div>
-                            <div className='Dashboard-notification' ref={_notificationBell}>
+                            <div className={`Dashboard-notification ${notificationFlag.newNotification ? 'New-notification' : ''}`}>
                                 <ul className='Dashboard-notification-list'>
-                                    <li className='Dashboard-notification-item' onClick={() => _notificationBell.current.classList.remove('New-notification')}>2 New Messages!</li>
+                                    <li className='Dashboard-notification-item' onClick={() =>  setNotificationFlag({ ...notificationFlag, newNotification: false })}>2 New Messages!</li>
                                 </ul>
                             </div>
                             <div className='Dashboard-profile-img'>
