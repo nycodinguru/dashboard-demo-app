@@ -18,7 +18,7 @@ const NavigationTheme = (props) => {
     return (
         <div
             className={'Theme-item'}
-            onClick={props.v.class ? (e, b = props.v.backgroundColor, c = props.v.color, k = props.v.class, i = props.v.invert) => changeNavTheme(e, b, c, k, i) : () => false}>
+            onClick={props.v.class ? (e, b = props.v.backgroundColor, c = props.v.color, k = props.v.class, i = props.v.invert) => changeNavTheme(e, b, c, k, i) : () => null}>
             <div className={`Theme-preview ${active} ${props.v.class}`} style={colors}>
                 <div className='Theme-preview-menu-items-left' style={color}></div>
                 <div className='Theme-preview-menu-items-right' style={color}></div>

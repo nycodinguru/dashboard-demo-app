@@ -35,7 +35,6 @@ export const settings = [
                 toggleName: '_smsNotifications',
                 control: 'toggle',
                 ariaLabel: 'sms notifications',
-                values: ['on']
             },
             {
                 name: 'Email Notifications',
@@ -45,7 +44,6 @@ export const settings = [
                 toggleName: '_emailNotifications',
                 control: 'toggle',
                 ariaLabel: 'email notifications',
-                values: ['on']
             }
         ]
     },
@@ -60,7 +58,6 @@ export const settings = [
                 toggleName: '_profilePrivacy',
                 control: 'toggle',
                 ariaLabel: 'make profile private',
-                values: ['on']
             },
             {
                 name: 'Search Privacy',
@@ -70,10 +67,40 @@ export const settings = [
                 toggleName: '_searchPrivacy',
                 control: 'toggle',
                 ariaLabel: 'search privacy',
-                values: ['off']
             }
         ]
     }
+]
+
+export const storedValues = [
+    {
+        key: 'defaultCurrency',
+        value: 'usd'
+    },
+    {
+        key: 'accountingMethodology',
+        value: 'lifo'
+    },
+    {
+        key: '_smsNotifications',
+        value: 'on'
+    },
+    {
+        key: '_emailNotifications',
+        value: 'on'
+    },
+    {
+        key: '_profilePrivacy',
+        value: 'on'
+    },
+    {
+        key: '_searchPrivacy',
+        value: 'off'
+    },
+    {
+        key: 'navigationTheme',
+        value: 'Endor'
+    },
 ]
 
 export const themes = [{
@@ -122,7 +149,7 @@ export const themes = [{
                 active: false
             },
             {
-                name: 'Winterfel',
+                name: 'Winterfell',
                 borderColor: 'rgba(0, 0, 0, 0.2)',
                 class: 'Winterfel',
                 color: '#000',

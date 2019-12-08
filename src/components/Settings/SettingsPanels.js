@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { settings, themes } from '../../data/data.js';
+import React, { useEffect, useState } from 'react';
+import { settings, storedValues, themes } from '../../data/data.js';
 import NavigationTheme from './NavigationTheme.js';
 
 const SettingsPanels = () => {
-    const [toggles, setToggles] = useState({
+    const [state, setState] = useState({
         defaultCurrency: '',
         accountingMethodology: '',
         _smsNotifications: '',
@@ -13,29 +13,23 @@ const SettingsPanels = () => {
         navigationTheme: ''
     });
 
+    useEffect(() => {
+        storedValues.forEach( i => {  setState(prev => ({ 
+            ...prev,
+            [i.key]: i.value,})) 
+        })
+        return () => {
+        };
+    }, [])
+
     const handleToggle = (e) => {
         const name = e.target.getAttribute('name');
+        const value = state[name] === 'on' ? 'on' : 'off';
 
-        if (e.target.classList.contains('off')) {
-            setToggles({
-                ...toggles,
-                [name]: 'on'
-            })
-            document.querySelectorAll(`.${name}`).forEach((k) => {
-                k.classList.remove('off')
-                k.classList.add('on')
-            })
-        }
-        else if (e.target.classList.contains('on')) {
-            setToggles({
-                ...toggles,
-                [name]: 'off'
-            })
-            document.querySelectorAll(`.${name}`).forEach((k) => {
-                k.classList.remove('on')
-                k.classList.add('off')
-            })
-        }
+        setState( prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
 
     const panels = settings.map((i, key) => {
@@ -62,21 +56,21 @@ const SettingsPanels = () => {
                                             })
                                             }
                                         </select>
-                                    </div> : j.control === 'toggle' ?
+                                    </div> : j.control === 'toggle' &&
                                         <div
-                                            className={`Toggle ${j.values[0]} ${j.toggleName}`}
+                                            className={`Toggle ${state[j.toggleName] === 'off' ? 'off' : 'on'} ${j.toggleName}`}
                                             name={`${j.toggleName}`} >
                                             <div
-                                                className={`Toggle-switch ${j.values[0]} ${j.toggleName}`}
+                                                className={`Toggle-switch ${state[j.toggleName] === 'off' ? 'off' : 'on'} ${j.toggleName}`}
                                                 name={`${j.toggleName}`}>
                                                 <div
-                                                    className={`Toggle-cover ${j.values[0]} ${j.toggleName}`}
+                                                    className={`Toggle-cover ${state[j.toggleName] === 'off' ? 'off' : 'on'} ${j.toggleName}`}
                                                     name={`${j.toggleName}`}
                                                     onClick={(e) => handleToggle(e)}
                                                     aria-label={`${j.ariaLabel}`}>
                                                 </div>
                                             </div>
-                                        </div> : ''}
+                                        </div> }
                             </div>
                         </div>
                     )
@@ -94,13 +88,13 @@ const SettingsPanels = () => {
                     {g.themes.map((v, key) => {
                         return (
                             <NavigationTheme
+                                navigationTheme={state.navigationTheme}
                                 v={v}
                                 key={key}
                             />
                         )
                     })}
                 </div>
-
             </div>
         )
     })

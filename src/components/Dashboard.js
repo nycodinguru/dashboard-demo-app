@@ -4,20 +4,14 @@ import notificationSound from '../assets/mp3s/pop-sound.mp3';
 
 import SettingsPanels from './Settings/SettingsPanels';
 
-export default function Dashboard() {
-    const [activityMenuOpen, setactivityMenuOpen] = useState({
-        isOpen: false
-    });
-    const [notificationFlag, setNotificationFlag] = useState({
-        newNotification: false
-    });
-    const [renderMenuItems, setRenderMenuItems] = useState({
-        render: false
-    });
+export default function Dashboard(props) {
+    const [activityMenuOpen, setactivityMenuOpen] = useState(false);
+    const [notificationFlag, setNotificationFlag] = useState({ newNotification: false });
+    const [renderMenuItems, setRenderMenuItems] = useState(false);
     
     const dropDownMenu = dashBoardDropDownItems.links.map((i, key) => {
         return (
-            <li key={key + 1} className={`Dashboard-activity-item ${renderMenuItems.render ? 'Open' : 'Closed'}`}>{i.name}</li>
+            <li key={key + 1} className={`Dashboard-activity-item ${renderMenuItems ? 'Open' : 'Closed'}`}>{i.name}</li>
         )
     });
 
@@ -30,28 +24,23 @@ export default function Dashboard() {
 
     function newNotification() {
         setNotificationFlag({ ...notificationFlag, newNotification: true })
-        if (notificationFlag.newNotification) playNotificationSound()
-    }
-
-    function playNotificationSound() {
-        
     }
 
     function openAcitviyMenu() {
-        if (!activityMenuOpen.isOpen) setactivityMenuOpen({ ...activityMenuOpen, isOpen: true })
-        else if (activityMenuOpen.isOpen) setactivityMenuOpen({ ...activityMenuOpen, isOpen: false })
+        if (!activityMenuOpen) setactivityMenuOpen(true)
+        else if (activityMenuOpen) setactivityMenuOpen(false)
         renderMenu();
     }
 
     function renderMenu() {
-        if (!activityMenuOpen.isOpen) setRenderMenuItems({...renderMenuItems, render: true})
-        else { setRenderMenuItems({...renderMenuItems, render: false}) }
+        if (!activityMenuOpen) setRenderMenuItems(true)
+        else { setRenderMenuItems(false) }
     }
 
     return (
         <React.Fragment>
             {notificationFlag.newNotification ? <audio src={notificationSound} autoPlay /> : ''}
-            <div className='Dashboard-container'>
+            <div className={`Dashboard-container ${props.state.navOpen ? 'Open' : ''}`}>
                 <div className='Dashboard-container-inner'>
                     <div className='Dashboard-header'>
                         <div className='Dashboard-current'>
@@ -59,8 +48,8 @@ export default function Dashboard() {
                             <h3 className='Dashboard-current-path'> <span>Profile</span> Settings </h3>
                         </div>
                         <div className='Dashboard-header-info'>
-                            <div className={`Dashboard-activity ${activityMenuOpen.isOpen ? 'Open' : 'Closed'}`} onClick={() => openAcitviyMenu()}>
-                                <ul className={`Dashboard-activity-list ${activityMenuOpen.isOpen ? '' : 'Closed'}`}>
+                            <div className={`Dashboard-activity ${activityMenuOpen ? 'Open' : 'Closed'}`} onClick={() => openAcitviyMenu()}>
+                                <ul className={`Dashboard-activity-list ${activityMenuOpen ? '' : 'Closed'}`}>
                                     {dropDownMenu}
                                 </ul>
                             </div>
