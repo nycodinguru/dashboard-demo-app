@@ -22,13 +22,13 @@ const SettingsPanels = () => {
         };
     }, [])
 
-    const handleToggle = (e) => {
+    const handleToggle = (e) => { 
         const name = e.target.getAttribute('name');
-        const value = state[name] === 'on' ? 'on' : 'off';
+        const value = state[name] === 'on' ? 'off' : 'on';
 
         setState( prev => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }))
     }
 
