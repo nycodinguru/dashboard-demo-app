@@ -65,7 +65,9 @@ export default function Dashboard(props) {
               <h1 className="Dashboard-current-header">Settings</h1>
               <h3 className="Dashboard-current-path">
                 {" "}
-                <span>Profile</span> Settings{" "}
+                <span>Profile</span>
+                <Icon className={"Chevron-right"} />
+                Settings{" "}
               </h3>
             </div>
             <div className="Dashboard-header-info">

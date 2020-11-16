@@ -121,6 +121,15 @@ export const themes = [
         active: false,
       },
       {
+        name: "Purple City",
+        color: "#f2f2f2",
+        darkModeColor: "#f2f2f2",
+        primaryColor: "#6747c7",
+        secondaryColor: "#6747c7",
+        class: "Purple-city",
+        active: true,
+      },
+      {
         name: "Tatooine",
         color: "#000",
         primaryColor: "#ddceae",
@@ -136,7 +145,7 @@ export const themes = [
         secondaryColor: "#618b8b",
         darkModeColor: "#fff",
         class: "Endor",
-        active: true,
+        active: false,
       },
       {
         name: "The Biz",

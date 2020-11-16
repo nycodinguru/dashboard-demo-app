@@ -24,7 +24,9 @@ const SettingsPanels = () => {
         [i.key]: i.value,
       }))
     })
-    return () => {}
+    setTimeout(() => {
+      toggleDarkMode()
+    }, 2000)
   }, [])
 
   const handleToggle = (e) => {

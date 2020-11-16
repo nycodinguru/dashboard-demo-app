@@ -306,7 +306,7 @@
           margin: 7px 0;
 
           &.active {
-            color: rgb(3, 49, 188);
+            color: var(--color-secondary);
             font-weight: bold;
           }
         }

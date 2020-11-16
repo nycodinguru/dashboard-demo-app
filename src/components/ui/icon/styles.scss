@@ -8,6 +8,11 @@
     mask: url("../../../assets/svgs/bell.svg");
   }
 
+  &.Chevron-right {
+    mask: url("../../../assets/svgs/chevron.svg");
+    //transform: rotate();
+  }
+
   &.Info {
     mask: url("../../../assets/svgs/info.svg");
   }

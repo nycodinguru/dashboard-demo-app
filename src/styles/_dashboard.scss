@@ -51,18 +51,13 @@
 
           span {
             font-weight: 500;
-            color: var(--color-secondary);
+            opacity: 0.5;
+          }
 
-            &::after {
-              content: "_";
-              color: transparent;
-              background-image: url("../assets/svgs/chevron.svg");
-              background-size: 80%;
-              transform: rotate(-90deg);
-              padding: 0 5px;
-              @include background-center-no-repeat;
-              display: inline-block;
-            }
+          .Chevron-right {
+            background-color: var(--color-secondary);
+            margin: 0 5px;
+            transform: translateY(3px);
           }
         }
       }
@@ -161,7 +156,7 @@
 
               &.Open {
                 &:first-of-type::after {
-                  transform: rotate(180deg);
+                  transform: rotate(-90deg);
                 }
               }
 
@@ -185,14 +180,17 @@
                 &::after {
                   display: inline-block;
                   content: "_";
-                  padding: 0 5px;
-                  background-image: url("../assets/svgs/chevron.svg");
-                  background-size: 60%;
-                  background-position: center;
-                  background-repeat: no-repeat;
+                  padding: 0 1px;
+                  transform: rotate(90deg);
+                  mask: url("../assets/svgs/chevron.svg");
                   color: transparent !important;
+                  background-color: var(--color-primary-text);
                   text-shadow: none;
                   margin-left: 20px;
+                  mask-size: contain !important;
+                  mask-position: center !important;
+                  mask-repeat: no-repeat !important;
+                  transition: all 0.3s ease-in-out;
                 }
               }
 
@@ -279,7 +277,7 @@
 
           &:hover > .Dashboard-profile-menu-list {
             @include visible;
-            top: 57px;
+            top: 67px;
           }
 
           .Dashboard-profile-menu-list {
@@ -288,6 +286,7 @@
             position: absolute;
             top: 52px;
             right: -52px;
+            transition: all 0.2s ease-in-out;
 
             @include mobile {
               width: 95px;

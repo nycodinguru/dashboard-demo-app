@@ -30,9 +30,8 @@
   box-shadow: 0 1px 13px 0px rgba(0, 0, 0, 0.25);
   border-radius: 18px;
   text-align: center;
-  transition: 0.5s all ease-out;
+  transition: all 0.2s ease-in-out;
   position: absolute;
-  color: $royalBlue;
 }
 
 @mixin dashboard-drop-down-small {
@@ -52,7 +51,7 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid var(--color-background);
+  border-top: 10px solid var(--color-light);
   top: -9px;
   right: 56px;
   transform: rotate(180deg);
@@ -72,7 +71,7 @@
 
 @mixin dashboard-activity-open {
   background: var(--color-primary);
-  transition: 0.3s all ease-in-out;
+  transition: 0.2s all ease-in-out;
   transform: translateY(-1px);
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
 }
