@@ -10,7 +10,16 @@
 
   &.Chevron-right {
     mask: url("../../../assets/svgs/chevron.svg");
-    //transform: rotate();
+  }
+
+  &.Chevron-up {
+    mask: url("../../../assets/svgs/chevron.svg");
+    transform: rotate(-90deg);
+  }
+
+  &.Chevron-down {
+    mask: url("../../../assets/svgs/chevron.svg");
+    transform: rotate(90deg);
   }
 
   &.Info {

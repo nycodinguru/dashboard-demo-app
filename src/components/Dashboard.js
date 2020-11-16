@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
 
-import { Icon } from "./ui"
+import { DropDown, Icon } from "./ui"
 
 import { dashBoardDropDownItems } from "../data/data.js"
 import notificationSound from "../assets/mp3s/pop-sound.mp3"
 
 import SettingsPanels from "./Settings/SettingsPanels"
 
-export default function Dashboard(props) {
+export default function Dashboard({ state }) {
   const [activityMenuOpen, setactivityMenuOpen] = useState(false)
   const [notificationFlag, setNotificationFlag] = useState({
     newNotification: false,
@@ -50,6 +50,10 @@ export default function Dashboard(props) {
     }
   }
 
+  const doNothing = () => {
+    return null
+  }
+
   return (
     <>
       {notificationFlag.newNotification ? (
@@ -57,8 +61,7 @@ export default function Dashboard(props) {
       ) : (
         ""
       )}
-      <div
-        className={`Dashboard-container ${props.state.navOpen ? "Open" : ""}`}>
+      <div className={`Dashboard-container ${state.navOpen ? "Open" : ""}`}>
         <div className="Dashboard-container-inner">
           <div className="Dashboard-header">
             <div className="Dashboard-current">
@@ -71,18 +74,16 @@ export default function Dashboard(props) {
               </h3>
             </div>
             <div className="Dashboard-header-info">
-              <div
-                className={`Dashboard-activity ${
-                  activityMenuOpen ? "Open" : "Closed"
-                }`}
-                onClick={() => openAcitviyMenu()}>
-                <ul
-                  className={`Dashboard-activity-list ${
-                    activityMenuOpen ? "" : "Closed"
-                  }`}>
-                  {dropDownMenu}
-                </ul>
-              </div>
+              <DropDown
+                label={"Manage Assets"}
+                className={"Activities-menu"}
+                items={[
+                  { label: "My Portfolio", callback: doNothing },
+                  { label: "Messages", callback: doNothing },
+                  { label: "Activity", callback: doNothing },
+                ]}
+                onClick={() => doNothing()}
+              />
               <div
                 className={`Dashboard-notification ${
                   notificationFlag.newNotification ? "New-notification" : ""

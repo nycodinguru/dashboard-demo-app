@@ -1,0 +1,62 @@
+.Drop-down-container {
+  .Drop-down-label-choice {
+    cursor: pointer;
+    background-color: var(--color-background);
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: var(--color-grey-text);
+    transition: all 0.2s ease-in-out;
+    display: flex;
+
+    .Chevron-down {
+      transform: translateY(2px) rotate(90deg);
+      background: var(--color-grey-text);
+      margin-left: 15px;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &.Open {
+    .Drop-down-label-choice {
+      opacity: 0.5;
+    }
+
+    .Chevron-down {
+      transform: translateY(2px) rotate(-90deg);
+    }
+
+    .Drop-down-choices {
+      opacity: 1;
+      transform: translateY(0px);
+      pointer-events: all;
+    }
+  }
+
+  .Drop-down-choices {
+    background: var(--color-light);
+    width: inherit;
+    color: var(--color-grey-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-20px);
+    border-radius: 4px;
+    pointer-events: none;
+    box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.2);
+    z-index: 500;
+
+    .Drop-down-choice {
+      padding: 10px 0;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+
+      &:hover {
+        background: var(--color-primary);
+        color: var(--color-primary-text);
+      }
+    }
+  }
+}

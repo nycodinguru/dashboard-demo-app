@@ -32,7 +32,7 @@
         align-items: flex-end;
         padding: 20px 25px 0 25px;
         width: 100vw;
-        margin: 0;
+        margin: 10px 0 0 0;
       }
 
       .Dashboard-current {
@@ -74,137 +74,29 @@
           top: 20px;
         }
 
-        .Dashboard-activity {
-          cursor: pointer;
-          background-color: var(--color-primary);
-          padding: 14px 28px;
-          border-radius: 50px;
-          border: solid var(--color-secondary);
-          border-width: 1px;
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-          position: absolute;
-          right: 88px;
-          width: 197px;
-          height: 47px;
-          z-index: 0;
-          background-image: url("../assets/pngs/grey.png");
-          background-blend-mode: overlay;
+        .Activities-menu {
+          font-size: 0.9rem;
 
-          &:hover,
-          &.Open {
-            @include dashboard-activity-open;
-
-            .Dashboard-activity-list {
-              .Dashboard-activity-item {
-                &:first-of-type {
-                  color: $pureWhite;
-                }
-                &:first-of-type::after {
-                  filter: brightness(100);
-                }
-              }
-            }
+          .Drop-down-label-choice {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            border-radius: 200px;
+            padding: 14px 28px;
           }
 
-          &.Open {
-            @include dashboard-activity-open;
-            .Dashboard-activity-list {
-              animation: activity-menu-fade-in 0.4s ease-out 0s 1 both;
-              @include visible;
-
-              .Dashboard-activity-item {
-                visibility: visible;
-                animation: activity-menu-items-fade-in 0.3s linear 0.2s 1 both;
-              }
-            }
+          .Icon {
+            background: var(--color-light);
+            height: 0.75rem !important;
+            width: 0.75rem !important;
           }
 
-          .Dashboard-activity-list {
-            font-size: 0.85rem;
-            text-align: left;
-            position: absolute;
-            margin: 0px 0 0 4px;
-            height: 0;
-            z-index: 30;
-            color: transparent;
-            background: linear-gradient(
-              180deg,
-              #b9888800 40%,
-              var(--color-light) 0%
-            );
-            @include drop-down-menu;
-            box-shadow: none;
-            transform: translateX(-26px);
-            height: 70px;
-            padding: 25px;
-            width: 182px;
-            z-index: 0;
-            opacity: 1;
+          .Drop-down-choices {
+            width: 163px;
+            margin-top: 1px;
+            left: 15px;
 
-            &.Closed {
-              animation: activity-menu-fade-out 0.4s ease-in 0.4s 1 both;
-            }
-
-            .Dashboard-activity-item {
-              margin-bottom: 15px;
-              @include bottom-border;
-              border-width: 1px;
-              padding-bottom: 15px;
-              color: $regularGrey;
-              width: 100%;
-              text-align: center;
-
-              &.Open {
-                &:first-of-type::after {
-                  transform: rotate(-90deg);
-                }
-              }
-
-              &.Closed {
-                animation: activity-menu-items-fade-out 0.3s ease-out 0s 1 both;
-              }
-
-              &:first-of-type {
-                @include visible;
-                animation: none;
-                display: inline-block;
-                padding: 0;
-                color: inherit;
-                border: none;
-                margin: 0;
-                transform: translateY(-25px);
-                color: var(--color-primary-text);
-                width: 109%;
-                cursor: default;
-
-                &::after {
-                  display: inline-block;
-                  content: "_";
-                  padding: 0 1px;
-                  transform: rotate(90deg);
-                  mask: url("../assets/svgs/chevron.svg");
-                  color: transparent !important;
-                  background-color: var(--color-primary-text);
-                  text-shadow: none;
-                  margin-left: 20px;
-                  mask-size: contain !important;
-                  mask-position: center !important;
-                  mask-repeat: no-repeat !important;
-                  transition: all 0.3s ease-in-out;
-                }
-              }
-
-              &:nth-of-type(2) {
-                margin-top: -11px;
-              }
-
-              &:last-of-type {
-                border: none;
-              }
-
-              &:hover {
-                @include dashboard-il-hover;
-              }
+            .Drop-down-choice {
+              margin: 5px 0;
             }
           }
         }
@@ -217,7 +109,7 @@
           transition: 0.4s all ease-in-out;
 
           .Bell {
-            background: var(--color-secondary);
+            background: var(--color-grey-text);
             height: 1.2rem !important;
             width: 1.2rem !important;
           }
@@ -225,6 +117,7 @@
           &.New-notification {
             animation: bellshake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0s 2
               both;
+            cursor: pointer;
 
             &::after {
               content: "_";
@@ -274,6 +167,7 @@
           height: 30px;
           width: 30px;
           border-radius: 50%;
+          cursor: pointer;
 
           &:hover > .Dashboard-profile-menu-list {
             @include visible;

@@ -22,7 +22,7 @@
 
     @include mobile {
       width: 95vw;
-      padding: 25px 35px;
+      padding: 25px;
       margin: 10px 0;
     }
 
@@ -62,48 +62,31 @@
         font-size: 0.7rem;
       }
 
-      .Select-wrapper {
-        width: 68px;
-        display: inline-block;
-        padding: 0 25px 5px 0;
+      .Settings-drop-down {
+        text-transform: uppercase;
 
-        .Select-drop-down {
-          width: 77px;
-          background: transparent;
-          font-size: 1rem;
-          color: var(--color-secondary);
-          padding: 5px 30px;
-          border: none;
-          padding: 5px 25px 5px 0;
+        @include mobile {
+          font-size: 0.8rem;
 
-          &:active > .Select-wrapper::after {
-            transform: translate(52px, -30px) rotate(180deg);
+          .Drop-down-label-choice {
+            padding: 7px 12px;
           }
 
-          &:hover {
-            opacity: 0.5;
-            transition: all 0.3s ease-in-out;
+          .Icon {
+            height: 0.8rem !important;
+            width: 0.8rem !important;
+            margin-left: 5px;
           }
         }
 
-        &.Active {
-          &::after {
+        &._currencyDropDown {
+          .Drop-down-choices {
+            width: 95px;
           }
         }
 
-        &::after {
-          content: "_";
-          color: transparent;
-          background-image: url("../assets/svgs/chevron.svg");
-          background-size: 90%;
-          background-position: 95%;
-          background-repeat: no-repeat;
-          position: absolute;
-          padding: 3px;
-          filter: saturate(0);
-          opacity: 0.5;
-          transform: translate(52px, -28px);
-          pointer-events: none;
+        .Drop-down-choices {
+          width: 100px;
         }
       }
 
@@ -191,7 +174,6 @@
 
       @include mobile {
         justify-content: space-around;
-        margin: -50px 0 0 0;
       }
 
       .Dark-mode-toggle {

@@ -66,7 +66,7 @@
     .Nav-menu-item {
       text-align: left;
       margin: 30px auto 30px 30px;
-      transition: all 0.2s ease-out;
+      transition: all 0.1s ease-out !important;
       font-size: 1rem;
 
       &::after {
@@ -174,8 +174,8 @@
     position: fixed;
     bottom: 0;
     left: 35px;
-    background-color: var(--navcolor, $endorGreen);
-    color: var(--color-primary-text, $offWhite);
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
     padding: 12px 27px;
     border-radius: 25px;
     @include flex-row;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-import { Toggle, Icon } from "../ui"
+import { Toggle, Icon, DropDown } from "../ui"
 
 import { settings, storedValues, themes } from "../../data/data.js"
 import NavigationTheme from "./NavigationTheme.js"
@@ -39,6 +39,13 @@ const SettingsPanels = () => {
     }))
   }
 
+  const updateDropDown = (type, val) => {
+    setState((prev) => ({
+      ...prev,
+      [type]: val,
+    }))
+  }
+
   const panels = settings.map((i, key) => {
     return (
       <div className="Settings-panel" key={key + 1}>
@@ -54,43 +61,35 @@ const SettingsPanels = () => {
                 <p className="Setting-description">{j.description}</p>
               </div>
               <div className="Setting-right">
-                {j.control === "dropdown" ? (
-                  <div className="Select-wrapper">
-                    <select
-                      className="Select-drop-down"
-                      name=""
-                      aria-label={`${j.ariaLabel}`}>
-                      {j.values.map((o, key) => {
-                        return (
-                          <option value={`${o.toLowerCase()}`} key={key + 3}>
-                            {o.toUpperCase()}
-                          </option>
-                        )
-                      })}
-                    </select>
-                  </div>
-                ) : (
-                  j.control === "toggle" && (
+                {j.control === "dropdown" && (
+                  <DropDown
+                    className={`${j.id} Settings-drop-down`}
+                    defaultValue={state[j.defaultValue] || j.values[0].label}
+                    category={j.defaultValue}
+                    items={j.values}
+                    onClick={updateDropDown}
+                  />
+                )}
+                {j.control === "toggle" && (
+                  <div
+                    className={`Toggle ${
+                      state[j.toggleName] === "off" ? "off" : "on"
+                    } ${j.toggleName}`}
+                    name={`${j.toggleName}`}>
                     <div
-                      className={`Toggle ${
+                      className={`Toggle-switch ${
                         state[j.toggleName] === "off" ? "off" : "on"
                       } ${j.toggleName}`}
                       name={`${j.toggleName}`}>
                       <div
-                        className={`Toggle-switch ${
+                        className={`Toggle-cover ${
                           state[j.toggleName] === "off" ? "off" : "on"
                         } ${j.toggleName}`}
-                        name={`${j.toggleName}`}>
-                        <div
-                          className={`Toggle-cover ${
-                            state[j.toggleName] === "off" ? "off" : "on"
-                          } ${j.toggleName}`}
-                          name={`${j.toggleName}`}
-                          onClick={(e) => handleToggle(e)}
-                          aria-label={`${j.ariaLabel}`}></div>
-                      </div>
+                        name={`${j.toggleName}`}
+                        onClick={(e) => handleToggle(e)}
+                        aria-label={`${j.ariaLabel}`}></div>
                     </div>
-                  )
+                  </div>
                 )}
               </div>
             </div>
