@@ -1,87 +1,88 @@
 @mixin flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 @mixin flex-col {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @mixin background-center-no-repeat {
-    background-position: center;
-    background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @mixin hidden {
-    visibility: hidden;
-    opacity: 0;
+  visibility: hidden;
+  opacity: 0;
 }
 
 @mixin visible {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
+  color: rgb(60, 82, 119);
 }
 
 @mixin drop-down-menu {
-    background: $pureWhite;
-    @include hidden;
-    box-shadow: 0 1px 13px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 18px;
-    text-align: center;
-    transition: 0.5s all ease-out;
-    position: absolute;
-    color: $royalBlue;
+  background: var(--color-light);
+  @include hidden;
+  box-shadow: 0 1px 13px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+  text-align: center;
+  transition: 0.5s all ease-out;
+  position: absolute;
+  color: $royalBlue;
 }
 
 @mixin dashboard-drop-down-small {
-    font-size: 0.7rem;
-    width: 130px;
-    padding: 10px 15px;
-    position: absolute;
-    z-index: 160;
-    margin-top: 4px;
+  font-size: 0.7rem;
+  width: 130px;
+  padding: 10px 15px;
+  position: absolute;
+  z-index: 160;
+  margin-top: 4px;
 }
 
 @mixin dashboard-drop-down-small-arrow {
-    content: '_';
-    color: transparent;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid $pureWhite;
-    top: -9px;
-    right: 56px;
-    transform: rotate(180deg);
-    z-index: 100;
+  content: "_";
+  color: transparent;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--color-background);
+  top: -9px;
+  right: 56px;
+  transform: rotate(180deg);
+  z-index: 100;
 }
 
 @mixin dashboard-il-hover {
-    transition: 0.4s all ease-in;
-    color: $royalBlue;
-    text-shadow: 0 0 1px #0331bc83;;
+  transition: 0.1s all ease-in;
+  color: var(--color-secondary);
+  text-shadow: 0 0 1px #0331bc83;
 }
 
 @mixin bottom-border {
-    border-bottom: solid rgba(0, 0, 0, 0.1);
-    border-width: 1px;
+  border-bottom: solid rgba(0, 0, 0, 0.1);
+  border-width: 1px;
 }
 
 @mixin dashboard-activity-open {
-    background: $royalBlue;
-    transition: 0.3s all ease-in-out;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
+  background: var(--color-primary);
+  transition: 0.3s all ease-in-out;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 @mixin floating-nav-button-icon {
-    content: '_';
-    display: inline-block;
-    color: transparent;
-    height: 3px;
-    background-color: inherit;
-    border-radius: 4px;
-    margin: 1px 0 0 17px;   
+  content: "_";
+  display: inline-block;
+  color: transparent;
+  height: 3px;
+  background-color: inherit;
+  border-radius: 4px;
+  margin: 1px 0 0 17px;
 }

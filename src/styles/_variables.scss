@@ -1,3 +1,21 @@
+html {
+  --color-background: #fafbfd;
+  --color-primary-text: #f2f2f2;
+  --color-primary: #6747c7;
+  --color-secondary: #7c56f0;
+  --color-grey-text: #777777;
+  --color-light: #ffffff;
+  --color-gray: #c4c4c4;
+  --color-royal-blue: #0331bc;
+}
+
+html.dark {
+  --color-background: #2e2e2e;
+  --color-light: #181818;
+  --color-primary-text: #1a1a1a;
+  --color-grey-text: #f4f4f4;
+}
+
 //Colors
 $offWhite: #fafbfd;
 $pureWhite: #fff;

@@ -1,0 +1,14 @@
+.Icon {
+  display: inline-block;
+  mask-size: contain !important;
+  mask-position: center !important;
+  mask-repeat: no-repeat !important;
+
+  &.Bell {
+    mask: url("../../../assets/svgs/bell.svg");
+  }
+
+  &.Info {
+    mask: url("../../../assets/svgs/info.svg");
+  }
+}

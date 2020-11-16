@@ -1,41 +1,47 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lexend Deca', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 body {
-    background-color: $offWhite;
+  background-color: var(--color-background);
 
-    @include mobile {
-        &.Open {
-            overflow: hidden !important;
-        }
+  @include mobile {
+    &.Open {
+      overflow: hidden !important;
     }
+  }
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-grey-text);
 }
 
 select {
-    -webkit-appearance: none;
-    cursor: pointer;
+  -webkit-appearance: none;
+  cursor: pointer;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 option {
-    text-align: center;
+  text-align: center;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 
-    li {
-        cursor: pointer;
-    }
+  li {
+    cursor: pointer;
+  }
 }
 
 div {
-    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }

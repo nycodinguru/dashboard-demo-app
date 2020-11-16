@@ -1,225 +1,219 @@
 .Nav-panel-container {
-    height: 100%;
-    width: 80px;
-    position: fixed;
-    z-index: 999;
-    display: flex;
-    transition: all 0.6s cubic-bezier(.24, 1.01, .68, 1.39);
+  height: 100%;
+  width: 80px;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  transition: all 0.6s cubic-bezier(0.24, 1.01, 0.68, 1.39);
 
-    @include mobile {
-        width: 0;
-
-        &.Open {
-            width: 100vw !important;
-        }
-    }
+  @include mobile {
+    width: 0;
 
     &.Open {
-        transition: all 0.6s cubic-bezier(.24, 1.01, .68, 1.39);
-        width: 210px;
+      width: 100vw !important;
+    }
+  }
+
+  &.Open {
+    transition: all 0.6s cubic-bezier(0.24, 1.01, 0.68, 1.39);
+    width: 210px;
+  }
+
+  .Nav-panel {
+    height: 100%;
+    width: 300px;
+    background-color: var(--color-primary);
+    color: var(--color-primary-text, $offWhite);
+    text-shadow: 0 0 1px var(--color-primary-text, $offWhite);
+    overflow-y: auto;
+
+    @include mobile {
+      padding-left: 70px;
+      transform: translateX(-70px);
     }
 
-    .Nav-panel {
-        height: 100%;
-        width: 300px;
-        background-color: var(--navcolor, $endorGreen);
-        color: var(--menucolor, $offWhite);
-        text-shadow: 0 0 1px var(--menucolor, $offWhite);
-        overflow-y: auto;
-    
-        @include mobile {
-            padding-left: 70px;
-            transform: translateX(-70px);
-        }
-    
-        &.Closed {
-            @include mobile {
-                transform: translateX(-100vw);
-                transition: 0.5s all ease-in-out;
-            }
-    
-            .Nav-menu-item {
-                &::after {
-                    content: '';
-                    transition: all 0.5s ease-in-out;
-                    transition-delay: 0.3s;
-                }
-            }
-    
-        
-        }
-    
-        .Nav-panel-logo {
-            margin: 30px auto 50px auto;
-            text-align: center;
-            font-size: 0;
-            color: transparent;
+    &.Closed {
+      @include mobile {
+        transform: translateX(-100vw);
+        transition: 0.5s all ease-in-out;
+      }
 
-            .Nav-panel-svg-logo {
-                width: 60%;
-                height: 100px;
-
-                path {
-                    fill: var(--menucolor, $offWhite);
-                }
-            }
-
+      .Nav-menu-item {
+        &::after {
+          content: "";
+          transition: all 0.5s ease-in-out;
+          transition-delay: 0.3s;
         }
-    
-        .Nav-menu-item {
-            text-align: left;
-            margin: 30px auto 30px 30px;
-            transition: all 0.2s ease-out;
-            font-size: 1rem;
-    
-            &::after {
-                transition: all 0.5s ease-in-out;
-            }
-    
-            &::before {
-                content: '_';
-                padding: 0px 4px;
-                mask-size: 100% !important;
-                mask-position: center !important;
-                mask-repeat: round !important;
-                color: transparent;
-                margin-right: 20px;
-                background-color: var(--menucolor, $offWhite);
-            }
-    
-            &:hover {
-                filter: invert(1);
-                transition: all 0.3s ease-in-out;
-            }
-        }
-    
-        .Accounts {
-            &::after {
-                content: 'Accounts';
-            }
-    
-            &::before {
-                mask: url('../assets/svgs/accounts.svg');
-            }
-        }
-    
-        .Ledger {
-            &::after {
-                content: 'Ledger';
-    
-            }
-    
-            &::before {
-                mask: url('../assets/svgs/ledger.svg');
-            }
-        }
-    
-        .Finance {
-            &::after {
-                content: 'Finance';
-            }
-    
-            &::before {
-                mask: url('../assets/svgs/finance.svg');
-            }
-        }
-    
-        .Learn {
-            &::after {
-                content: 'Learn';
-            }
-    
-            &::before {
-                mask: url('../assets/svgs/learn.svg');
-            }
-        }
-    
-        .Marketplace {
-            &::after {
-                content: 'Marketplace';
-            }
-    
-            &::before {
-                mask: url('../assets/svgs/marketplace.svg');
-            }
-        }
-    
-        .Nav-menu-upper {
-            margin-bottom: 150px;
-        }
-    
-        .Nav-menu-lower {
-            opacity: 0.8;
-        }
+      }
     }
 
-    .Close-click-area {
-        display: none;
-    
-        @include mobile {
-            height: 100%;
-            width: calc(100vw - 230px); 
-            position: absolute;
-            left: 230px;
+    .Nav-panel-logo {
+      margin: 30px auto 50px auto;
+      text-align: center;
+      font-size: 0;
+      color: transparent;
 
-            &.Open {
-                display: block;
-                animation: dim-area-right-of-nav 0.3s ease-in 0.3s 1 both;
-            }
+      .Nav-panel-svg-logo {
+        width: 60%;
+        height: 100px;
+
+        path {
+          fill: var(--color-primary-text, $offWhite);
         }
-        
+      }
     }
-}
 
+    .Nav-menu-item {
+      text-align: left;
+      margin: 30px auto 30px 30px;
+      transition: all 0.2s ease-out;
+      font-size: 1rem;
 
+      &::after {
+        transition: all 0.5s ease-in-out;
+      }
 
-.Floating-nav-button {
+      &::before {
+        content: "_";
+        padding: 0px 4px;
+        mask-size: 100% !important;
+        mask-position: center !important;
+        mask-repeat: round !important;
+        color: transparent;
+        margin-right: 20px;
+        background-color: var(--color-primary-text, $offWhite);
+      }
+
+      &:hover {
+        filter: invert(1);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    .Accounts {
+      &::after {
+        content: "Accounts";
+      }
+
+      &::before {
+        mask: url("../assets/svgs/accounts.svg");
+      }
+    }
+
+    .Ledger {
+      &::after {
+        content: "Ledger";
+      }
+
+      &::before {
+        mask: url("../assets/svgs/ledger.svg");
+      }
+    }
+
+    .Finance {
+      &::after {
+        content: "Finance";
+      }
+
+      &::before {
+        mask: url("../assets/svgs/finance.svg");
+      }
+    }
+
+    .Learn {
+      &::after {
+        content: "Learn";
+      }
+
+      &::before {
+        mask: url("../assets/svgs/learn.svg");
+      }
+    }
+
+    .Marketplace {
+      &::after {
+        content: "Marketplace";
+      }
+
+      &::before {
+        mask: url("../assets/svgs/marketplace.svg");
+      }
+    }
+
+    .Nav-menu-upper {
+      margin-bottom: 150px;
+    }
+
+    .Nav-menu-lower {
+      opacity: 0.8;
+    }
+  }
+
+  .Close-click-area {
     display: none;
 
     @include mobile {
+      height: 100%;
+      width: calc(100vw - 230px);
+      position: absolute;
+      left: 230px;
+
+      &.Open {
         display: block;
-        position: fixed;
-        bottom: 0;
-        left: 35px;
-        background-color: var(--navcolor, $endorGreen);
-        color: var(--menucolor, $offWhite);
-        padding: 12px 27px;
-        border-radius: 25px;
-        @include flex-row;
-        box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.4);
-        animation: nav-button-rise 0.5s cubic-bezier(.24, 1.01, .68, 1.39) 1.1s 1 forwards;
-        z-index: 400;
-        transform: translate(-17px, 70px);
-        transition: 0.5s all cubic-bezier(.24, 1.01, .68, 1.39);
+        animation: dim-area-right-of-nav 0.3s ease-in 0.3s 1 both;
+      }
+    }
+  }
+}
+
+.Floating-nav-button {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 35px;
+    background-color: var(--navcolor, $endorGreen);
+    color: var(--color-primary-text, $offWhite);
+    padding: 12px 27px;
+    border-radius: 25px;
+    @include flex-row;
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.4);
+    animation: nav-button-rise 0.5s cubic-bezier(0.24, 1.01, 0.68, 1.39) 1.1s 1
+      forwards;
+    z-index: 400;
+    transform: translate(-17px, 70px);
+    transition: 0.5s all cubic-bezier(0.24, 1.01, 0.68, 1.39);
+  }
+
+  &.Open {
+    transition: 0.4s all ease-in-out;
+    @include hidden;
+    margin-left: 100vw !important;
+  }
+
+  .Floating-nav-button-label {
+    font-size: 1rem;
+  }
+
+  .Floating-nav-button-icon {
+    width: 26px;
+    height: 3px;
+    background-color: var(--color-primary-text, $offWhite);
+    border-radius: 4px;
+    margin: 2px 0 0 17px;
+
+    &::before {
+      @include floating-nav-button-icon;
+      width: 70%;
+      transform: translate(-17px, 6px);
     }
 
-    &.Open {
-        transition: 0.4s all ease-in-out;
-        @include hidden;
-        margin-left: 100vw !important;
+    &::after {
+      @include floating-nav-button-icon;
+      width: 55%;
+      transform: translate(-17px, -8px);
     }
-
-    .Floating-nav-button-label {
-        font-size: 1rem;
-    }
-
-    .Floating-nav-button-icon {
-        width: 26px;
-        height: 3px;
-        background-color: var(--menucolor, $offWhite);
-        border-radius: 4px;
-        margin: 2px 0 0 17px;
-
-        &::before {
-            @include floating-nav-button-icon;
-            width: 70%;
-            transform: translate(-17px, 6px);
-        }
-
-        &::after {
-            @include floating-nav-button-icon;
-            width: 55%;
-            transform: translate(-17px, -8px);
-        }
-    }
+  }
 }

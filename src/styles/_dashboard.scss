@@ -1,325 +1,333 @@
 .Dashboard-container {
-    width: 100vw;
-    @include flex-col;
-    align-items: flex-end;
-    transition: 1s all ease-out;
-    padding-bottom: 10vh;
+  width: 100vw;
+  @include flex-col;
+  align-items: flex-end;
+  transition: 1s all ease-out;
+  padding-bottom: 10vh;
+
+  @include mobile {
+    &.Open {
+      transition: 0.6s all ease-in-out;
+      filter: blur(7px);
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  .Dashboard-container-inner {
+    width: 83%;
 
     @include mobile {
-        &.Open {
-            transition: 0.6s all ease-in-out;
-            filter: blur(7px);
-            pointer-events: none;
-            opacity: 0.5;
-        }
+      width: 100%;
     }
 
-    .Dashboard-container-inner {
-        width: 83%;
+    .Dashboard-header {
+      width: 97%;
+      padding: 25px 32px 10px 32px;
+      display: flex;
+      justify-content: space-between;
+
+      @include mobile {
+        flex-direction: baseline;
+        align-items: flex-end;
+        padding: 20px 25px 0 25px;
+        width: 100vw;
+        margin: 0;
+      }
+
+      .Dashboard-current {
+        @include mobile {
+          margin: 60px 0 0 10px;
+        }
+
+        .Dashboard-current-header {
+          font-size: 2.3rem;
+        }
+
+        .Dashboard-current-path {
+          font-size: 0.88rem;
+          padding: 10px 0;
+          cursor: default;
+
+          span {
+            font-weight: 500;
+            color: var(--color-secondary);
+
+            &::after {
+              content: "_";
+              color: transparent;
+              background-image: url("../assets/svgs/chevron.svg");
+              background-size: 80%;
+              transform: rotate(-90deg);
+              padding: 0 5px;
+              @include background-center-no-repeat;
+              display: inline-block;
+            }
+          }
+        }
+      }
+
+      .Dashboard-header-info {
+        transform: translateY(-10px);
+        @include flex-row;
+        align-items: center;
 
         @include mobile {
-            width: 100%;
+          padding: 20px 0;
+          position: absolute;
+          right: 40px;
+          top: 20px;
         }
 
-        .Dashboard-header {
-            width: 97%;
-            padding: 25px 32px 10px 32px;
-            display: flex;
-            justify-content: space-between;
+        .Dashboard-activity {
+          cursor: pointer;
+          background-color: var(--color-primary);
+          padding: 14px 28px;
+          border-radius: 50px;
+          border: solid var(--color-secondary);
+          border-width: 1px;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+          position: absolute;
+          right: 88px;
+          width: 197px;
+          height: 47px;
+          z-index: 0;
+          background-image: url("../assets/pngs/grey.png");
+          background-blend-mode: overlay;
+
+          &:hover,
+          &.Open {
+            @include dashboard-activity-open;
+
+            .Dashboard-activity-list {
+              .Dashboard-activity-item {
+                &:first-of-type {
+                  color: $pureWhite;
+                }
+                &:first-of-type::after {
+                  filter: brightness(100);
+                }
+              }
+            }
+          }
+
+          &.Open {
+            @include dashboard-activity-open;
+            .Dashboard-activity-list {
+              animation: activity-menu-fade-in 0.4s ease-out 0s 1 both;
+              @include visible;
+
+              .Dashboard-activity-item {
+                visibility: visible;
+                animation: activity-menu-items-fade-in 0.3s linear 0.2s 1 both;
+              }
+            }
+          }
+
+          .Dashboard-activity-list {
+            font-size: 0.85rem;
+            text-align: left;
+            position: absolute;
+            margin: 0px 0 0 4px;
+            height: 0;
+            z-index: 30;
+            color: transparent;
+            background: linear-gradient(
+              180deg,
+              #b9888800 40%,
+              var(--color-light) 0%
+            );
+            @include drop-down-menu;
+            box-shadow: none;
+            transform: translateX(-26px);
+            height: 70px;
+            padding: 25px;
+            width: 182px;
+            z-index: 0;
+            opacity: 1;
+
+            &.Closed {
+              animation: activity-menu-fade-out 0.4s ease-in 0.4s 1 both;
+            }
+
+            .Dashboard-activity-item {
+              margin-bottom: 15px;
+              @include bottom-border;
+              border-width: 1px;
+              padding-bottom: 15px;
+              color: $regularGrey;
+              width: 100%;
+              text-align: center;
+
+              &.Open {
+                &:first-of-type::after {
+                  transform: rotate(180deg);
+                }
+              }
+
+              &.Closed {
+                animation: activity-menu-items-fade-out 0.3s ease-out 0s 1 both;
+              }
+
+              &:first-of-type {
+                @include visible;
+                animation: none;
+                display: inline-block;
+                padding: 0;
+                color: inherit;
+                border: none;
+                margin: 0;
+                transform: translateY(-25px);
+                color: var(--color-primary-text);
+                width: 109%;
+                cursor: default;
+
+                &::after {
+                  display: inline-block;
+                  content: "_";
+                  padding: 0 5px;
+                  background-image: url("../assets/svgs/chevron.svg");
+                  background-size: 60%;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  color: transparent !important;
+                  text-shadow: none;
+                  margin-left: 20px;
+                }
+              }
+
+              &:nth-of-type(2) {
+                margin-top: -11px;
+              }
+
+              &:last-of-type {
+                border: none;
+              }
+
+              &:hover {
+                @include dashboard-il-hover;
+              }
+            }
+          }
+        }
+
+        .Dashboard-notification {
+          height: 20px;
+          width: 20px;
+          margin: 0 20px;
+          filter: saturate(1.5);
+          transition: 0.4s all ease-in-out;
+
+          .Bell {
+            background: var(--color-secondary);
+            height: 1.2rem !important;
+            width: 1.2rem !important;
+          }
+
+          &.New-notification {
+            animation: bellshake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0s 2
+              both;
+
+            &::after {
+              content: "_";
+              color: transparent;
+              background: $fireRed;
+              border-radius: 50%;
+              width: 6px;
+              height: 6px;
+              font-size: 0.01rem;
+              display: inline-block;
+              border: solid $pureWhite;
+              border-width: 2px;
+              position: absolute;
+              left: 11px;
+              box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.3);
+              top: 2px;
+            }
+
+            &:hover > .Dashboard-notification-list {
+              @include visible;
+              top: 28px;
+            }
+          }
+
+          .Dashboard-notification-list {
+            @include drop-down-menu;
+            @include dashboard-drop-down-small;
+            top: 21px;
+            right: -56px;
+
+            &::before {
+              @include dashboard-drop-down-small-arrow;
+            }
+
+            &::first-letter {
+              font-weight: initial !important;
+              margin-right: 2px;
+              color: $fireRed;
+            }
+          }
+        }
+
+        .Dashboard-profile-img {
+          background-image: url("../assets/jpgs/profile-pic.jpg");
+          background-size: cover;
+          background-position: center;
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+
+          &:hover > .Dashboard-profile-menu-list {
+            @include visible;
+            top: 57px;
+          }
+
+          .Dashboard-profile-menu-list {
+            @include drop-down-menu;
+            @include dashboard-drop-down-small;
+            position: absolute;
+            top: 52px;
+            right: -52px;
 
             @include mobile {
-                flex-direction: baseline;
-                align-items: flex-end;
-                padding: 20px 25px 0 25px;
-                width: 100vw;
-                margin: 0;
+              width: 95px;
+              right: -33px;
             }
 
-            .Dashboard-current {
-                @include mobile {
-                    margin: 60px 0 0 10px
-                }
+            &::before {
+              @include dashboard-drop-down-small-arrow;
 
-                .Dashboard-current-header {
-                    font-size: 2.3rem;
-                }
-
-                .Dashboard-current-path {
-                    font-size: 0.8rem;
-                    padding: 10px 0;
-                    cursor: default;
-
-                    span {
-                        font-weight: 500;
-                        color: $royalBlue;
-
-                        &::after {
-                            content: '_';
-                            color: transparent;
-                            background-image: url('../assets/svgs/chevron.svg');
-                            background-size: 80%;
-                            transform: rotate(-90deg);
-                            padding: 0 5px;
-                            @include background-center-no-repeat;
-                            display: inline-block;
-                        }
-                    }
-                }
+              @include mobile {
+                right: 37px;
+              }
             }
 
-            .Dashboard-header-info {
-                transform: translateY(-10px);
-                @include flex-row;
-                align-items: center;
+            .Dashboard-profile-menu-list-item {
+              padding: 10px 0;
+              @include bottom-border;
+              font-size: 0.85rem;
+              color: var(--color-grey-text);
 
-                @include mobile {
-                    padding: 20px 0;
-                    position: absolute;
-                    right: 40px;
-                    top: 20px;
-                }
+              @include mobile {
+                font-size: 0.8rem;
+              }
 
-                .Dashboard-activity {
-                    background: $powderBlue;
-                    padding: 14px 28px;
-                    border-radius: 50px;
-                    border: solid rgba(51, 84, 195, 0.4);
-                    border-width: 1px;
-                    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-                    position: absolute;
-                    right: 88px;
-                    width: 197px;
-                    height: 47px;
-                    z-index: 0;
+              &:hover {
+                @include dashboard-il-hover;
+              }
 
-                    &:hover,
-                    &.Open {
-                       @include dashboard-activity-open;
-                       
-                       .Dashboard-activity-list {
-                            .Dashboard-activity-item {
-                                &:first-of-type {
-                                    color: $pureWhite;
-                                }
-                                &:first-of-type::after {
-                                    filter: brightness(100);
-                                }
-                            }
-                        }
-                      
-                    }
+              &:first-of-type {
+                padding: 5px 0 10px 0;
+              }
 
-                    &.Open {
-                        @include dashboard-activity-open;
-                        .Dashboard-activity-list {
-                            animation: activity-menu-fade-in 0.4s ease-out 0s 1 both;
-                            @include visible;
-
-                            .Dashboard-activity-item {
-                                visibility: visible;
-                                animation: activity-menu-items-fade-in 0.3s linear 0.2s 1 both;
-                            }
-
-                        }
-                    }
-
-                    .Dashboard-activity-list {
-                        font-size: 0.85rem;
-                        text-align: left;
-                        position: absolute;
-                        margin: 0px 0 0 4px;
-                        height: 0;
-                        z-index: 30;
-                        color: transparent;
-                        background: linear-gradient(180deg, #b9888800 40%, $pureWhite 0%);
-                        @include drop-down-menu;
-                        box-shadow: none;
-                        transform: translateX(-26px);
-                        height: 70px;
-                        padding: 25px;
-                        width: 182px;
-                        z-index: 0;
-                        opacity: 1;
-
-                        &.Closed {
-                            animation: activity-menu-fade-out 0.4s ease-in 0.4s 1 both;
-                        }
-
-                        .Dashboard-activity-item {
-                            margin-bottom: 15px;
-                            @include bottom-border;
-                            border-width: 1px;
-                            padding-bottom: 15px;
-                            color: $regularGrey;
-                            width: 100%;
-                            text-align: center;
-
-                            &.Open {
-                                &:first-of-type::after {
-                                    transform: rotate(180deg);
-                                }
-                            }
-
-                            &.Closed {
-                                animation: activity-menu-items-fade-out 0.3s ease-out 0s 1 both;
-                            }
-
-                            &:first-of-type {
-                                @include visible;
-                                animation: none;
-                                display: inline-block;
-                                padding: 0;
-                                color: inherit;
-                                border: none;
-                                margin: 0;
-                                transform: translateY(-25px);
-                                color: $royalBlue;
-                                width: 109%;
-                                cursor: default;
-
-                                &::after {
-                                    display: inline-block;
-                                    content: "_";
-                                    padding: 0 5px;
-                                    background-image: url('../assets/svgs/chevron.svg');
-                                    background-size: 60%;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    color: transparent !important;
-                                    text-shadow: none;
-                                    margin-left: 20px;
-                                }
-                            }
-
-                            &:nth-of-type(2) {
-                                margin-top: -11px;
-                            }
-
-                            &:last-of-type {
-                                border: none
-                            }
-
-                            &:hover {
-                               @include dashboard-il-hover;
-                            }
-                        }
-                    }
-                }
-
-                .Dashboard-notification {
-                    background-image: url('../assets/svgs/bell.svg');
-                    background-size: cover;
-                    @include background-center-no-repeat;
-                    height: 20px;
-                    width: 20px;
-                    margin: 0 20px;
-                    filter: saturate(1.5);
-                    transition: 0.4s all ease-in-out;
-
-                    &.New-notification {
-                        animation: bellshake .5s cubic-bezier(.36, .07, .19, .97) 0s 2 both;
-
-                        &::after {
-                            content: '_';
-                            color: transparent;
-                            background: $fireRed;
-                            border-radius: 50%;
-                            width: 7px;
-                            height: 7px;
-                            font-size: 0.01rem;
-                            display: inline-block;
-                            border: solid $pureWhite;
-                            border-width: 2px;
-                            position: absolute;
-                            left: 10px;
-                            top: 2px;
-                        }
-
-                        &:hover>.Dashboard-notification-list {
-                            @include visible;
-                            top: 28px;
-                        }
-
-                    }
-
-                    .Dashboard-notification-list {
-                        @include drop-down-menu;
-                        @include dashboard-drop-down-small;
-                        top: 21px;
-                        right: -56px;
-
-                        &::before {
-                            @include dashboard-drop-down-small-arrow;
-                        }
-
-                        &::first-letter {
-                            font-weight: initial !important;
-                            margin-right: 2px;
-                            color: $fireRed;
-                        }
-                    }
-                }
-
-                .Dashboard-profile-img {
-                    background-image: url('../assets/jpgs/profile-pic.jpg');
-                    background-size: cover;
-                    background-position: center;
-                    height: 30px;
-                    width: 30px;
-                    border-radius: 50%;
-
-                    &:hover>.Dashboard-profile-menu-list {
-                        @include visible;
-                        top: 57px;
-                    }
-
-                    .Dashboard-profile-menu-list {
-                        @include drop-down-menu;
-                        @include dashboard-drop-down-small;
-                        position: absolute;
-                        top: 52px;
-                        right: -52px;
-
-                        @include mobile {
-                            width: 95px;
-                            right: -33px;
-                        }
-
-                        &::before {
-                            @include dashboard-drop-down-small-arrow;
-
-                            @include mobile {
-                                right: 37px;
-                            }
-                        }
-
-                        .Dashboard-profile-menu-list-item {
-                            padding: 10px 0;
-                            @include bottom-border;
-                            font-size: 0.85rem;
-                            color: $regularGrey;
-
-                            @include mobile {
-                                font-size: 0.8rem;
-                            }
-
-                            &:hover {
-                                @include dashboard-il-hover;
-                            }
-
-                            &:first-of-type {
-                                padding: 5px 0 10px 0;
-                            }
-
-                            &:last-of-type {
-                                border: none;
-                                padding: 10px 0 5px 0;
-                            }
-
-                        }
-                    }
-                }
+              &:last-of-type {
+                border: none;
+                padding: 10px 0 5px 0;
+              }
             }
+          }
         }
+      }
     }
+  }
 }
