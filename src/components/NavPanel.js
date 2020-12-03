@@ -1,31 +1,30 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef, useContext } from "react"
 import { navMenuItems } from "../data/data.js"
 
-export default function NavPanel(props) {
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../contexts/global-context-provider"
+
+export default function NavPanel() {
+  const _navPanel = useRef()
+  const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
+
   useEffect(() => {
-    if (window.innerWidth > 766) {
-      setTimeout(() => openNav(), 1000)
-      setTimeout(() => closeNav(), 2000)
-    }
+    //setTimeout(() => toggleNav(true), 1000)
+    //setTimeout(() => toggleNav(false), 2200)
     return () => {
-      clearTimeout(closeNav)
-      clearTimeout(openNav)
+      clearTimeout(toggleNav)
     }
   }, [])
 
-  function openNav() {
-    if (window.innerWidth < 766) {
-      props.dispatch({ type: "nav_panel", value: true })
-      document.querySelector("body").classList.add("Open")
-    }
-  }
-
-  function closeNav() {
-    if (window.innerWidth < 766) {
-      props.dispatch({ type: "nav_panel", value: false })
-      setTimeout(() => {
-        document.querySelector("body").classList.remove("Open")
-      }, 300)
+  function toggleNav(val) {
+    if (!state.navPanelOpen || (!state.navPanelOpen && val === true)) {
+      dispatch({ type: "NAV_PANEL", value: true })
+      _navPanel.current.classList.add("Open")
+    } else if (state.navPanelOpen || (state.navPanelOpen && val === false)) {
+      dispatch({ type: "NAV_PANEL", value: false })
     }
   }
 
@@ -35,11 +34,11 @@ export default function NavPanel(props) {
         {i.names.map((g, key) => {
           return (
             <li
-              className={`Nav-menu-item ${
-                props.state.navOpen ? "Open" : "Closed"
-              } ${g.name}`}
+              className={`Nav-menu-item ${state.navPanelOpen ? "Open" : ""} ${
+                g.name
+              }`}
               key={key + 2}
-              onClick={() => closeNav()}
+              onClick={toggleNav}
               aria-label={`${g.ariaLabel}`}></li>
           )
         })}
@@ -50,12 +49,24 @@ export default function NavPanel(props) {
   return (
     <>
       <div
-        className={`Nav-panel-container ${
-          props.state.navOpen ? "Open" : "Closed"
-        }`}
-        onMouseEnter={() => openNav()}
-        onMouseLeave={() => closeNav()}>
-        <div className={`Nav-panel ${props.state.navOpen ? "Open" : "Closed"}`}>
+        className={`Nav-panel-container ${state.navPanelOpen ? "Open" : ""}`}
+        ref={_navPanel}>
+        <div
+          className="Nav-panel"
+          onMouseOver={
+            window.innerWidth > 766 && !state.navPanelOpen
+              ? () => toggleNav(true)
+              : () => {
+                  return null
+                }
+          }
+          onMouseLeave={
+            window.innerWidth > 766 && state.navPanelOpen
+              ? toggleNav
+              : () => {
+                  return null
+                }
+          }>
           <h3 className="Nav-panel-logo">
             Linus
             <svg
@@ -81,17 +92,15 @@ export default function NavPanel(props) {
           </h3>
           <div className="Nav-menus">{navMenu}</div>
         </div>
-        <div
-          className={`Close-click-area ${
-            props.state.navOpen ? "Open" : "Closed"
-          }`}
-          onClick={() => closeNav()}></div>
+        {window.innerWidth < 766 && (
+          <div
+            className={`Close-click-area ${state.navPanelOpen ? "Open" : ""}`}
+            onClick={() => toggleNav(false)}></div>
+        )}
       </div>
       <div
-        className={`Floating-nav-button ${
-          props.state.navOpen ? "Open" : "Closed"
-        }`}
-        onClick={() => openNav()}>
+        className={`Floating-nav-button ${state.navPanelOpen ? "Open" : ""}`}
+        onClick={() => toggleNav(true)}>
         <div className="Floating-nav-button-label">Menu</div>
         <div className="Floating-nav-button-icon"></div>
       </div>

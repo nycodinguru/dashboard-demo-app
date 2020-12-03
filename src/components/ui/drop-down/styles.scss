@@ -46,12 +46,14 @@
     pointer-events: none;
     box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.2);
     z-index: 500;
+    transition: all 0.2s ease-in-out;
 
     .Drop-down-choice {
-      padding: 10px 0;
+      padding: 8px 0;
       cursor: pointer;
       text-align: center;
       width: 100%;
+      border-radius: 5px;
 
       &:hover {
         background: var(--color-primary);

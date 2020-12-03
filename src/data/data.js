@@ -253,20 +253,3 @@ export const navMenuItems = [
     ],
   },
 ]
-
-export const dashBoardDropDownItems = {
-  links: [
-    {
-      name: "Manage Assets",
-    },
-    {
-      name: "My Portfolio",
-    },
-    {
-      name: "Messages",
-    },
-    {
-      name: "Activity",
-    },
-  ],
-}

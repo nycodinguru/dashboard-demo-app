@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>x mark</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="x-mark" stroke="#979797" stroke-width="2">
+            <g id="Group-4" transform="translate(2.000000, 2.000000)">
+                <path d="M0.5,10.5 L10.5124922,0.487507803" id="Line-2"></path>
+                <path d="M0.5,10.5 L10.5124922,0.487507803" id="Line-2-Copy" transform="translate(5.500000, 5.500000) scale(-1, 1) translate(-5.500000, -5.500000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

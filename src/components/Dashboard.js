@@ -1,53 +1,47 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 
 import { DropDown, Icon } from "./ui"
 
-import { dashBoardDropDownItems } from "../data/data.js"
 import notificationSound from "../assets/mp3s/pop-sound.mp3"
 
 import SettingsPanels from "./Settings/SettingsPanels"
 
-export default function Dashboard({ state }) {
-  const [activityMenuOpen, setactivityMenuOpen] = useState(false)
+import { GlobalStateContext } from "../contexts/global-context-provider"
+
+import { useToastContext } from "../hooks"
+
+export default function Dashboard() {
   const [notificationFlag, setNotificationFlag] = useState({
     newNotification: false,
   })
-  const [renderMenuItems, setRenderMenuItems] = useState(false)
-
-  const dropDownMenu = dashBoardDropDownItems.links.map((i, key) => {
-    return (
-      <li
-        key={key + 1}
-        className={`Dashboard-activity-item ${
-          renderMenuItems ? "Open" : "Closed"
-        }`}>
-        {i.name}
-      </li>
-    )
-  })
+  const state = useContext(GlobalStateContext)
+  const addToastMessage = useToastContext()
 
   useEffect(() => {
-    let fakeNotifiction = setTimeout(() => newNotification(), 4000)
+    let fakeNotifiction = setTimeout(() => {
+      addToastMessage({
+        message: "New message from Wendi!",
+        status: "neutral",
+        iconClass: "Message",
+      })
+      newNotification()
+    }, 4000)
+    let fakeNotifiction2 = setTimeout(() => {
+      addToastMessage({
+        message: "New message from Morgan!",
+        status: "neutral",
+        iconClass: "Message",
+      })
+      newNotification()
+    }, 4500)
     return () => {
       clearTimeout(fakeNotifiction)
+      clearTimeout(fakeNotifiction2)
     }
   }, [])
 
   function newNotification() {
     setNotificationFlag({ ...notificationFlag, newNotification: true })
-  }
-
-  function openAcitviyMenu() {
-    if (!activityMenuOpen) setactivityMenuOpen(true)
-    else if (activityMenuOpen) setactivityMenuOpen(false)
-    renderMenu()
-  }
-
-  function renderMenu() {
-    if (!activityMenuOpen) setRenderMenuItems(true)
-    else {
-      setRenderMenuItems(false)
-    }
   }
 
   const doNothing = () => {
@@ -61,7 +55,8 @@ export default function Dashboard({ state }) {
       ) : (
         ""
       )}
-      <div className={`Dashboard-container ${state.navOpen ? "Open" : ""}`}>
+      <div
+        className={`Dashboard-container ${state.navPanelOpen ? "Open" : ""}`}>
         <div className="Dashboard-container-inner">
           <div className="Dashboard-header">
             <div className="Dashboard-current">

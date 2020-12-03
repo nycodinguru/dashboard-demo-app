@@ -4,46 +4,55 @@
   position: fixed;
   z-index: 999;
   display: flex;
-  transition: all 0.6s cubic-bezier(0.24, 1.01, 0.68, 1.39);
+  transition: all 0.2s cubic-bezier(0.24, 1.01, 0.68, 1.39);
 
   @include mobile {
-    width: 0;
+    visibility: hidden;
+    width: 0px;
 
     &.Open {
       width: 100vw !important;
+      visibility: visible;
     }
   }
 
   &.Open {
-    transition: all 0.6s cubic-bezier(0.24, 1.01, 0.68, 1.39);
     width: 210px;
+
+    .Nav-panel {
+      width: 210px;
+
+      @include mobile {
+        width: 230px;
+      }
+
+      .Nav-menu-item {
+        &::after {
+          opacity: 1;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
   }
 
   .Nav-panel {
     height: 100%;
-    width: 300px;
+    width: 80px;
     background-color: var(--color-primary);
     color: var(--color-primary-text, $offWhite);
     text-shadow: 0 0 1px var(--color-primary-text, $offWhite);
     overflow-y: auto;
 
     @include mobile {
-      padding-left: 70px;
-      transform: translateX(-70px);
+      padding-left: 20px;
     }
 
-    &.Closed {
-      @include mobile {
-        transform: translateX(-100vw);
-        transition: 0.5s all ease-in-out;
-      }
-
-      .Nav-menu-item {
-        &::after {
-          content: "";
-          transition: all 0.5s ease-in-out;
-          transition-delay: 0.3s;
-        }
+    .Nav-menu-item {
+      &::after {
+        opacity: 0;
+        content: "";
+        transition: none;
+        transition-delay: 0s;
       }
     }
 
@@ -167,10 +176,10 @@
 }
 
 .Floating-nav-button {
-  display: none;
+  visibility: hidden;
 
   @include mobile {
-    display: block;
+    visibility: visible;
     position: fixed;
     bottom: 0;
     left: 35px;

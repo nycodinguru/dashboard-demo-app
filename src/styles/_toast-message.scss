@@ -1,0 +1,144 @@
+.Toast-message-container {
+  width: 400px;
+  min-height: 70px;
+  max-height: max-content;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+
+  @include mobile {
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    top: 0;
+
+    &.Open {
+      transform: translateX(500px);
+    }
+  }
+
+  @keyframes open-animation {
+    from {
+      visibility: hidden;
+      margin-bottom: initial;
+      transform: translateX(500px);
+      color: transparent;
+    }
+
+    to {
+      margin-bottom: 10px;
+      transform: translateX(0);
+      color: var(--color-grey-text);
+      visibility: visible;
+    }
+  }
+
+  @keyframes open-animation-icon {
+    0% {
+      background-color: transparent;
+    }
+
+    100% {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .Toast-message {
+    max-width: 90%;
+    border-radius: 5px;
+    z-index: 10000;
+    display: flex;
+    color: transparent;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.85rem;
+    padding: 18px 25px;
+    visibility: hidden;
+    margin: 10px auto 0 auto;
+    height: max-content;
+    animation: open-animation 0.25s ease-in-out 0s 1 both;
+
+    .Icon {
+      background-color: transparent;
+      margin-right: 20px;
+      animation: open-animation-icon 0.25s ease-in-out 0s 1 both;
+    }
+
+    .Toast-message-close-button {
+      &::before {
+        content: "";
+        color: transparent;
+        background: rgba(0, 0, 0, 0.061);
+        position: absolute;
+        border-radius: 50%;
+        transition: all 0.1s ease-in-out;
+        margin: auto;
+        width: 1.5rem;
+        height: 1.5rem;
+        transform: translate(-4px, -2px);
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      &:hover {
+        &::before {
+          visibility: visible;
+          width: 2.8rem;
+          height: 2.8rem;
+          transform: translate(-13px, -12px);
+        }
+      }
+
+      &:active {
+        &::before {
+          visibility: visible;
+          width: 1.2rem;
+          height: 1.2rem;
+          transform: translate(-1px, 1px);
+        }
+      }
+
+      .Icon {
+        cursor: pointer;
+        margin: 0 !important;
+      }
+    }
+
+    &.Closed {
+      animation: open-animation 0.5s ease-in 0.75s 1 reverse;
+
+      .Icon {
+        animation: open-animation-icon 0.5s ease-in 0.75s 1 reverse;
+      }
+    }
+
+    &.success {
+      background-color: var(--color-green);
+      box-shadow: 0 1px 5px -1px var(--color-green);
+    }
+
+    &.neutral {
+      background-color: var(--color-light);
+      box-shadow: 0 2px 20px 10px rgba(102, 74, 74, 0.04);
+    }
+
+    &.failure {
+      background-color: var(--color-red);
+      box-shadow: 0 1px 5px -1px var(--color-red);
+
+      .Toast-message-inner-content {
+        .Icon {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    &-inner-content {
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease-in-out;
+      opacity: 1;
+      color: inherit;
+    }
+  }
+}

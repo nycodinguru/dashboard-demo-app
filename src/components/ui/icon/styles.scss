@@ -8,6 +8,10 @@
     mask: url("../../../assets/svgs/bell.svg");
   }
 
+  &.Circled-plus {
+    mask: url("../../../assets/svgs/circled-plus.svg");
+  }
+
   &.Chevron-right {
     mask: url("../../../assets/svgs/chevron.svg");
   }
@@ -24,5 +28,13 @@
 
   &.Info {
     mask: url("../../../assets/svgs/info.svg");
+  }
+
+  &.Message {
+    mask: url("../../../assets/svgs/message.svg");
+  }
+
+  &.X-mark {
+    mask: url("../../../assets/svgs/x-mark.svg");
   }
 }
